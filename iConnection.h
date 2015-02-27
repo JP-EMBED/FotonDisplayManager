@@ -23,7 +23,7 @@ class iConnection : public QObject
         void finishedScanning();
 
     public slots:
-        virtual void scanForDevices(QString filter_type){}
+        virtual void scanForDevices(QString filter_type){Q_UNUSED(filter_type)}
         virtual void stopScanning(){}
         virtual void sendMessage(QByteArray message){}
         virtual void connectToDevice(QString device_name, QString addr, QString pin = ""){}

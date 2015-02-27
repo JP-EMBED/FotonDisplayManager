@@ -9,7 +9,10 @@ SOURCES += main.cpp \
     connectionmanager.cpp \
     fotonledmessagefactory.cpp \
     ledboardmanager.cpp \
-    serialconnectionmanager.cpp
+    serialconnectionmanager.cpp \
+    FExplorer.cpp \
+    Foton.cpp \
+    grid.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,11 +27,22 @@ include(deployment.pri)
 DISTFILES += \
     qml/main.qml \
     qml/FindDeviceMenu.qml \
-    qml/LedBoardView.qml
+    qml/LedBoardView.qml \
+    qml/ColorPicker/CheckerBoard.qml \
+    qml/ColorPicker/ColorPicker.qml \
+    qml/ColorPicker/ColorSlider.qml \
+    qml/ColorPicker/NumberBox.qml \
+    qml/ColorPicker/PanelBorder.qml \
+    qml/ColorPicker/SBPicker.qml \
+    qml/FExplorer/FExplorer.qml \
+    qml/FExplorer/File.qml
 
 HEADERS += \
     connectionmanager.h \
     fotonledmessagefactory.h \
     iConnection.h \
     ledboardmanager.h \
-    serialconnectionmanager.h
+    serialconnectionmanager.h \
+    FExplorer.h \
+    Foton.h \
+    grid.h

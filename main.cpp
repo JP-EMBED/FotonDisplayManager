@@ -4,6 +4,8 @@
 #include <QQmlContext>
 #include <QScreen>
 #include "serialconnectionmanager.h"
+#include "Foton.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -36,10 +38,16 @@ int main(int argc, char *argv[])
         screen_height = temp_width;
     }
     iConnection * connection = new SerialConnectionManager(&app);
+	Grid grid;
+    FExplorer explorer(&grid);
+	Foton foton(&grid, &explorer);
     LedBoardManager   brdManager(connection,&app);
     engine.rootContext()->setContextProperty("ScreenWidth",screen_width);
     engine.rootContext()->setContextProperty("ScreenHeight",screen_height);
     engine.rootContext()->setContextProperty("LedBoardManager", &brdManager);
+	engine.rootContext()->setContextProperty("Foton", &foton);
+    engine.rootContext()->setContextProperty("LedGrid", &grid);
+    engine.rootContext()->setContextProperty("explorer", &explorer);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
