@@ -35,7 +35,14 @@ DISTFILES += \
     qml/ColorPicker/PanelBorder.qml \
     qml/ColorPicker/SBPicker.qml \
     qml/FExplorer/FExplorer.qml \
-    qml/FExplorer/File.qml
+    qml/FExplorer/File.qml \
+    qml/LedBoardView/ColorPalette.qml \
+    qml/LedBoardView/ToolBar.qml \
+    qml/LedBoardView/AnimationBar.qml \
+    qml/LedBoardView/LedGrid.qml \
+    qml/LedBoardView/LedBoardView.qml \
+    qml/LedGrid.qml \
+    qml/LedBoardView/LedGrid.qml
 
 HEADERS += \
     connectionmanager.h \

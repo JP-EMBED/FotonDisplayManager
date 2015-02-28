@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/FindDeviceMenu.qml</file>
-        <file>qml/LedBoardView.qml</file>
         <file>qml/main.qml</file>
         <file>qml/FExplorer/FExplorer.qml</file>
         <file>qml/FExplorer/File.qml</file>
@@ -11,5 +10,10 @@
         <file>qml/ColorPicker/NumberBox.qml</file>
         <file>qml/ColorPicker/PanelBorder.qml</file>
         <file>qml/ColorPicker/SBPicker.qml</file>
+        <file>qml/LedBoardView/AnimationBar.qml</file>
+        <file>qml/LedBoardView/ColorPalette.qml</file>
+        <file>qml/LedBoardView/LedBoardView.qml</file>
+        <file>qml/LedBoardView/ToolBar.qml</file>
+        <file>qml/LedBoardView/LedGrid.qml</file>
     </qresource>
 </RCC>

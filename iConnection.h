@@ -14,7 +14,7 @@ class iConnection : public QObject
 
         }
 
-        virtual bool isConnected(){}
+        //virtual bool isConnected(){}
 
     signals:
         void deviceConnected();

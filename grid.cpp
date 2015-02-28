@@ -6,7 +6,7 @@ Grid::Grid(QObject *parent)
 {
     QColor off("black");
     m_LEDColor = new QColor*;
-    m_LEDColor[0]= new QColor[1024]{};
+    m_LEDColor[0]= new QColor[1024];
 
     for (int i = 0; i < 1024; i++)
         m_LEDColor[m_currentPage][i] = off;
@@ -64,7 +64,7 @@ void Grid::insertPage()
         temp2[i] = m_duration[i];
     }
 
-    temp[m_currentPage+1] = new QColor[1024]{};
+    temp[m_currentPage+1] = new QColor[1024];
     temp2[m_currentPage+1] = 500;
 
     for (int j = m_currentPage+2; j < m_lastPage; ++j)
