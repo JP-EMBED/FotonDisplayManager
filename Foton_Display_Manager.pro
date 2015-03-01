@@ -1,9 +1,9 @@
 TEMPLATE = app
 
-QT += qml quick bluetooth
+QT += qml quick bluetooth serialport
 
 #move other libraries too Bluetooth.
-win32:QT += serialport
+
 
 SOURCES += main.cpp \
     connectionmanager.cpp \
@@ -53,3 +53,20 @@ HEADERS += \
     FExplorer.h \
     Foton.h \
     grid.h
+
+OTHER_FILES += \
+    qml/main.qml \
+    qml/ColorPicker/CheckerBoard.qml \
+    qml/ColorPicker/ColorPicker.qml \
+    qml/ColorPicker/ColorSlider.qml \
+    qml/ColorPicker/NumberBox.qml \
+    qml/ColorPicker/PanelBorder.qml \
+    qml/ColorPicker/SBPicker.qml \
+    qml/FExplorer/FExplorer.qml \
+    qml/FExplorer/File.qml \
+    qml/LedBoardView/AnimationBar.qml \
+    qml/LedBoardView/ColorPalette.qml \
+    qml/LedBoardView/LedBoardView.qml \
+    qml/LedBoardView/LedGrid.qml \
+    qml/LedBoardView/ToolBar.qml \
+    qml/ConnectionMenu/FindDeviceMenu.qml

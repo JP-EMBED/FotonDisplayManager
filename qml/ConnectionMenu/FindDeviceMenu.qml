@@ -81,7 +81,7 @@ Rectangle {
                     anchors.right: parent.right
                     anchors.bottom: parent.verticalCenter
                     color: "steelblue"
-                    text: deviceName ? deviceName : name
+                    text: deviceName ? deviceName : "LED Foton Board"
                     font.pixelSize:120
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -92,7 +92,6 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     height: 120
-
                     text: deviceAddress
                     horizontalAlignment: Text.AlignHCenter
                     color:"white"
@@ -179,6 +178,31 @@ Rectangle {
             font.bold: true
             font.pointSize:40
             anchors.centerIn: parent
+        }
+        Rectangle{
+            width: parent.width/5
+            height: parent.height*.8
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: 10
+            color: "transparent"
+            border.color: "yellow"
+            border.width: 4
+            ComboBox {
+                currentIndex:0
+                model: ["Bluetooth", "USB"]
+                anchors.fill: parent
+                onCurrentIndexChanged:
+                {
+                    console.log("Changed connection to ", model[currentIndex]);
+                    if(currentIndex == 0)
+                        console.log("Changed connection to ", model[currentIndex]);
+                        //LedBoardManager.changeConnectionType(LedBoardManager.BLUETOOTH)
+                    else
+                        console.log("Changed connection to ", model[currentIndex]);
+                        //LedBoardManager.changeConnectionType(LedBoardManager.USB)
+                }
+            }
         }
 
         SequentialAnimation on color {

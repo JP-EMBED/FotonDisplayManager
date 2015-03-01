@@ -27,10 +27,10 @@ void LedBoardManager::findLedBoard()
 void LedBoardManager::foundDevice(QString dname, QString dmac, QStringList dservice)
 {
     //qDebug() << "Found " << dname << " With services " << dservice << " at MAC " << dmac;
-    if(dname.contains("LED Board"))
-    {
+   // if(dname.contains("LED Board"))
+   // {
         emit foundLedBoard(dname,dmac);
-    }
+   // }
 
 }
 

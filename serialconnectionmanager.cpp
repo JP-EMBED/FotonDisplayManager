@@ -21,14 +21,14 @@ void SerialConnectionManager::scanForDevices(QString filter_type)
     QList<QSerialPortInfo>  ports(QSerialPortInfo::availablePorts());
     foreach(const QSerialPortInfo & port,ports )
     {
-        QString name = "Foton LED Board";
+        QString name = port.description();
         QString desc = port.portName();
         QStringList last;
         last.append(port.description());
 
-        qDebug() << "Port Name: " << name << "\nDescription : " << desc << "\n";
-        if(port.description().contains("CC3200"))
-            emit foundDevice(name, desc, last);
+        qDebug() << "Port Name: " << port.portName() << "\nDescription : " << desc << "\n";
+        //if(port.description().contains("CC3200"))
+        emit foundDevice(name, desc, last);
     }
 }
 
