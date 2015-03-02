@@ -1,5 +1,5 @@
-import QtQuick 2.3
-import QtQuick.Controls 1.2
+import QtQuick 2.4
+import QtQuick.Controls 1.3
 
 Rectangle {
     anchors.fill:parent
@@ -29,6 +29,8 @@ Rectangle {
            console.log("Finished scanning");
         }
         onConnectedToLedBoard:{
+
+            busy.running = false;
             console.log("Connected to " + deviceID);
             topRect.visible = false;
             boardView.visible = true;
@@ -111,6 +113,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
+                            busy.running = false;
                             LedBoardManager.connectToBoard(deviceName,deviceAddress);
                         }
                     }
@@ -194,13 +197,8 @@ Rectangle {
                 anchors.fill: parent
                 onCurrentIndexChanged:
                 {
-                    console.log("Changed connection to ", model[currentIndex]);
-                    if(currentIndex == 0)
-                        console.log("Changed connection to ", model[currentIndex]);
-                        //LedBoardManager.changeConnectionType(LedBoardManager.BLUETOOTH)
-                    else
-                        console.log("Changed connection to ", model[currentIndex]);
-                        //LedBoardManager.changeConnectionType(LedBoardManager.USB)
+                    LedBoardManager.changeConnectionType(model[currentIndex])
+
                 }
             }
         }

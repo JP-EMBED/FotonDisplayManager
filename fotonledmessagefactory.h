@@ -78,7 +78,7 @@ class FotonLEDMessageFactory
 public:
     explicit FotonLEDMessageFactory();
     void  createLEDSet(int ROW, int COL, QByteArray& buffer);
-    void  createLEDClear(int led_num,QByteArray& buffer);
+    void  createLEDClear(QByteArray& buffer);
     void  createDrawLine(FOTON_LINE line, FOTON_RGB color,QByteArray& buffer);
     void  createLEDSetColor(FOTON_COLOR RED, FOTON_COLOR GREEN, FOTON_COLOR BLUE, QByteArray& buffer);
 };

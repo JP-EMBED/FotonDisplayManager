@@ -34,35 +34,25 @@ void FotonLEDMessageFactory::createLEDSetColor(FOTON_COLOR RED, FOTON_COLOR GREE
 
     buffer.append(LED_SET_COLOR);
 
-    quint8   flagbyte(0);
-    if(RED)
-    {
-        flagbyte |= 0x04;
-    }
-    if(GREEN)
-    {
-        flagbyte |= 0x02;
-    }
-    if(BLUE)
-    {
-        flagbyte |= 0x01;
-    }
 
-   // qDebug() << flagbyte;
-    buffer.append(flagbyte);
-    if(RED)
-        buffer.append(RED);
-    if(GREEN)
-        buffer.append(GREEN);
-    if(BLUE)
-        buffer.append(BLUE);
+    buffer.append(RED);
 
-    buffer.append(FOTON_TERMINAL);
+    buffer.append(GREEN);
+
+    buffer.append(BLUE);
 }
 
-void  FotonLEDMessageFactory::createLEDClear(int led_num,QByteArray& buffer)
+void  FotonLEDMessageFactory::createLEDClear(QByteArray& buffer)
 {
 
+    buffer.append(LED_CLEAR);
+
+
+    buffer.append(75);
+
+    buffer.append(75);
+
+    buffer.append(75);
 }
 
 void  FotonLEDMessageFactory::createDrawLine(FOTON_LINE line, FOTON_RGB color,QByteArray& buffer)

@@ -2,6 +2,10 @@ TEMPLATE = app
 
 QT += qml quick bluetooth
 
+win32{
+QT += serialport
+}
+
 #move other libraries too Bluetooth.
 
 
@@ -11,7 +15,8 @@ SOURCES += main.cpp \
     ledboardmanager.cpp \
     FExplorer.cpp \
     Foton.cpp \
-    grid.cpp
+    grid.cpp \
+    serialconnectionmanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -41,7 +46,14 @@ DISTFILES += \
     qml/LedBoardView/LedGrid.qml \
     qml/LedBoardView/LedBoardView.qml \
     qml/LedGrid.qml \
-    qml/LedBoardView/LedGrid.qml
+    qml/LedBoardView/LedGrid.qml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/AndroidManifest.xml \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat
 
 HEADERS += \
     connectionmanager.h \
@@ -50,7 +62,8 @@ HEADERS += \
     ledboardmanager.h \
     FExplorer.h \
     Foton.h \
-    grid.h
+    grid.h \
+    serialconnectionmanager.h
 
 OTHER_FILES += \
     qml/main.qml \
@@ -68,3 +81,5 @@ OTHER_FILES += \
     qml/LedBoardView/LedGrid.qml \
     qml/LedBoardView/ToolBar.qml \
     qml/ConnectionMenu/FindDeviceMenu.qml
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

@@ -37,11 +37,11 @@ int main(int argc, char *argv[])
         screen_width = screen_height;
         screen_height = temp_width;
     }
-    iConnection * connection = new ConnectionManager(&app);
+
 	Grid grid;
     FExplorer explorer(&grid);
 	Foton foton(&grid, &explorer);
-    LedBoardManager   brdManager(connection,&app);
+    LedBoardManager   brdManager(nullptr,&app);
     engine.rootContext()->setContextProperty("ScreenWidth",screen_width);
     engine.rootContext()->setContextProperty("ScreenHeight",screen_height);
     engine.rootContext()->setContextProperty("LedBoardManager", &brdManager);
@@ -55,6 +55,5 @@ int main(int argc, char *argv[])
 
 
     int ret_val = app.exec();
-    delete connection;
     return ret_val;
 }

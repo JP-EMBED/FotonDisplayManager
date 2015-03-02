@@ -21,14 +21,14 @@ void SerialConnectionManager::scanForDevices(QString filter_type)
     QList<QSerialPortInfo>  ports(QSerialPortInfo::availablePorts());
     foreach(const QSerialPortInfo & port,ports )
     {
-        QString name = port.description();
-        QString desc = port.portName();
+        QString name = port.portName();
+        QString desc = port.description();
         QStringList last;
         last.append(port.description());
 
         qDebug() << "Port Name: " << port.portName() << "\nDescription : " << desc << "\n";
         //if(port.description().contains("CC3200"))
-        emit foundDevice(name, desc, last);
+        emit foundDevice(desc, name, last);
     }
 }
 

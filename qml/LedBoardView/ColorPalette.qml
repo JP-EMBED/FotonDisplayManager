@@ -1,6 +1,4 @@
-import QtQuick 2.0
-import QtQuick 2.1
-import QtQuick 2.3
+import QtQuick 2.4
 import QtQuick.Window 2.2
 
 
@@ -39,14 +37,13 @@ Rectangle
                 {
                     if (colorButton0.colorUse0 == 0)
                     {
-                        LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
-                        colorButton0.border.color = "#FFB01C"
-                        colorButton1.border.color = 'black'
-                        colorButton2.border.color = 'black'
-                        colorButton3.border.color = 'black'
-                        colorButton4.border.color = 'black'
-                        colorButton5.border.color = 'black'
+                        LedGrid.colorSelect(parent.color);
+                        colorButton0.border.color = "#FFB01C";
+                        colorButton1.border.color = "black";
+                        colorButton2.border.color = "black";
+                        colorButton3.border.color = "black";
+                        colorButton4.border.color = "black";
+                        colorButton5.border.color = "black";
                         colorPicker.x = Screen.width*-1;
                         colorButton0.colorUse0 = 1;
                         colorButton1.colorUse1 = 0;
@@ -64,8 +61,8 @@ Rectangle
                         colorPicker.x = Screen.width*-1;
                         colorButton0.color = colorPicker.pickedColor;
                         colorButton0.colorUse0 = 1;
-                        LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
+                        LedGrid.colorSelect(parent.color);
+                        LedBoardManager.sendLedColor(parent.color);
                     }
                 }
             }
@@ -89,8 +86,7 @@ Rectangle
                 {
                     if (colorButton1.colorUse1 == 0)
                     {
-                        LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
+                        LedGrid.colorSelect(parent.color);
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = "#FFB01C"
                         colorButton2.border.color = 'black'
@@ -116,7 +112,7 @@ Rectangle
                         colorButton1.color = colorPicker.pickedColor;
                         colorButton1.colorUse1 = 1;
                         LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
+                        LedBoardManager.sendLedColor(parent.color);
                     }
                 }
             }
@@ -141,7 +137,6 @@ Rectangle
                     if (colorButton2.colorUse2 == 0)
                     {
                         LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
                         colorButton2.border.color = "#FFB01C"
@@ -166,7 +161,7 @@ Rectangle
                         colorButton2.color = colorPicker.pickedColor;
                         colorButton2.colorUse2 = 1;
                         LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
+                        LedBoardManager.sendLedColor(parent.color);
                     }
                 }
             }
@@ -190,7 +185,6 @@ Rectangle
                     if (colorButton3.colorUse3 == 0)
                     {
                         LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
                         colorButton2.border.color = 'black'
@@ -240,7 +234,6 @@ Rectangle
                     if (colorButton4.colorUse4 == 0)
                     {
                         LedGrid.colorSelect(parent.color)
-                        LedBoardManager.sendLedColor(parent.color)
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
                         colorButton2.border.color = 'black'
@@ -286,7 +279,6 @@ Rectangle
                 onClicked:
                 {
                     LedGrid.colorSelect(parent.color)
-                    LedBoardManager.sendLedColor(parent.color)
                     colorButton0.border.color = 'black'
                     colorButton1.border.color = 'black'
                     colorButton2.border.color = 'black'

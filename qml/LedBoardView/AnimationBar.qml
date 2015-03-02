@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick 2.4
+import QtQuick.Controls 1.2
 import QtQuick.Window 2.2
 
 Rectangle
@@ -43,7 +43,7 @@ Rectangle
             onClicked:
             {
                 LedGrid.clearBoard()
-
+                LedBoardManager.sendClearBoard();
                 for(var i = 0; i < 1024;i++)
                     square.grid.itemAt(i).color = 'black'
             }
