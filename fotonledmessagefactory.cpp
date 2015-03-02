@@ -12,12 +12,10 @@ FotonLEDMessageFactory::FotonLEDMessageFactory()
 // Fills the buffer with a 7 byte encoded LED Set Command
 void FotonLEDMessageFactory::createLEDSet(int ROW, int COL, QByteArray& buffer)
 {
-    buffer.append(FOTON_START);
-
     //qDebug() << "CTRL Byte 1 " << ((LED_MJR << 5) | ROW );
     //qDebug() << "CTRL Byte 2 " << ((LED_SET_MNR << 5) | COL);
 
-    buffer.append(LED_SET_COLOR);
+    buffer.append(LED_SET_AT);
     buffer.append(ROW);
     buffer.append(COL);
 
@@ -30,7 +28,6 @@ void FotonLEDMessageFactory::createLEDSet(int ROW, int COL, QByteArray& buffer)
 
 void FotonLEDMessageFactory::createLEDSetColor(FOTON_COLOR RED, FOTON_COLOR GREEN, FOTON_COLOR BLUE, QByteArray& buffer)
 {
-    buffer.append(FOTON_START);
 
     //qDebug() << "CTRL Byte 1 " << ((LED_MJR << 5) | ROW );
     //qDebug() << "CTRL Byte 2 " << ((LED_SET_MNR << 5) | COL);

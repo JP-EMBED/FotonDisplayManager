@@ -50,9 +50,12 @@ Rectangle
             {
                     if (square.selectedTool == "Pen")
                     {
-                        changeMade()
-                        LedGrid.ledPressed((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        repeater.itemAt((point1.x/(square.width/32))|0 + (point1.y/(square.height/32)|0)*32).color = LedGrid.getColor()
+                        var row = Math.floor(point1.y/(square.height/32));
+                        var col = Math.floor(point1.x/(square.height/32));
+                        changeMade();
+                        LedGrid.ledPressed(col, row);
+                        LedBoardManager.sendLedSet(col, row);
+                        repeater.itemAt(col + row*32).color = LedGrid.getColor();
                     }
             }
 
@@ -159,8 +162,11 @@ Rectangle
             {
                     if (square.selectedTool == "Pen")
                     {
-                        LedGrid.ledPressed((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        repeater.itemAt((point1.x/(square.width/32))|0 + (point1.y/(square.height/32)|0)*32).color = LedGrid.getColor()
+                        var row = Math.floor(point1.y/(square.height/32));
+                        var col = Math.floor(point1.x/(square.height/32));
+                        LedGrid.ledPressed(col, row);
+                        LedBoardManager.sendLedSet(col, row);
+                        repeater.itemAt(col + row*32).color = LedGrid.getColor();
                     }
                     else if (square.selectedTool == "Move")
                     {

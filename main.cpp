@@ -3,7 +3,7 @@
 #include "ledboardmanager.h"
 #include <QQmlContext>
 #include <QScreen>
-#include "serialconnectionmanager.h"
+//#include "serialconnectionmanager.h"
 #include "Foton.h"
 
 int main(int argc, char *argv[])
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         screen_width = screen_height;
         screen_height = temp_width;
     }
-    iConnection * connection = new SerialConnectionManager(&app);
+    iConnection * connection = new ConnectionManager(&app);
 	Grid grid;
     FExplorer explorer(&grid);
 	Foton foton(&grid, &explorer);

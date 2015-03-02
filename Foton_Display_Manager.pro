@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick bluetooth serialport
+QT += qml quick bluetooth
 
 #move other libraries too Bluetooth.
 
@@ -9,7 +9,6 @@ SOURCES += main.cpp \
     connectionmanager.cpp \
     fotonledmessagefactory.cpp \
     ledboardmanager.cpp \
-    serialconnectionmanager.cpp \
     FExplorer.cpp \
     Foton.cpp \
     grid.cpp
@@ -49,7 +48,6 @@ HEADERS += \
     fotonledmessagefactory.h \
     iConnection.h \
     ledboardmanager.h \
-    serialconnectionmanager.h \
     FExplorer.h \
     Foton.h \
     grid.h

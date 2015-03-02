@@ -40,7 +40,12 @@ Rectangle
     function displayGrid()
     {
         for(var i = 0; i < 1024;i++)
+        {
+            var row = i/32;
+            var col = Math.floor(i%32);
             square.grid.itemAt(i).color = LedGrid.getLedColor(i);
+            LedBoardManager.sendLedSet(row, col);
+        }
     }
 
     function flipPage(dir)
