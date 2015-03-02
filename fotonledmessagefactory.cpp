@@ -17,11 +17,11 @@ void FotonLEDMessageFactory::createLEDSet(int ROW, int COL, QByteArray& buffer)
     //qDebug() << "CTRL Byte 1 " << ((LED_MJR << 5) | ROW );
     //qDebug() << "CTRL Byte 2 " << ((LED_SET_MNR << 5) | COL);
 
-    buffer.append(LED_MJR << 5 | ROW );
-    buffer.append(LED_SET_MNR << 5 | COL);
+    buffer.append(LED_SET_COLOR);
+    buffer.append(ROW);
+    buffer.append(COL);
 
-
-    //buffer.append(FOTON_TERMINAL);
+    buffer.append(FOTON_TERMINAL);
 
    // qDebug() << buffer << " With a length of " << buffer.length();
 
@@ -35,8 +35,7 @@ void FotonLEDMessageFactory::createLEDSetColor(FOTON_COLOR RED, FOTON_COLOR GREE
     //qDebug() << "CTRL Byte 1 " << ((LED_MJR << 5) | ROW );
     //qDebug() << "CTRL Byte 2 " << ((LED_SET_MNR << 5) | COL);
 
-    buffer.append(LED_MJR << 5);
-    buffer.append(LED_SETCOLOR_MNR << 5);
+    buffer.append(LED_SET_COLOR);
 
     quint8   flagbyte(0);
     if(RED)

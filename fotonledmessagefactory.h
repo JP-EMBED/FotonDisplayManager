@@ -18,21 +18,22 @@ typedef  struct FOTON_RGB
 static const char FOTON_START ='#';
 static const char FOTON_TERMINAL ='$';
 
+typedef struct FOTON_LIVE_MESSAGE
+{
+    unsigned char FUNC_CTRL;
+    unsigned char DATA1;
+    unsigned char DATA2;
+    unsigned char DATA3;
+}FOTON_LIVE_MESSAGE;
+
+
 enum FUNCTIONS_MAJOR
 {
     NONE = 0,
-    LED_MJR,
-    DRAW_MJR,
-    TRANSFER_MJR,
-    SYSTEM_MJR
-};
-
-enum LED_MINOR
-{
-    LED_CLEAR_MNR = 0,
-    LED_SET_MNR,
-    LED_SETCOLOR_MNR,
-    LED_READ_MNR
+    LED_CLEAR,
+    LED_SET_COLOR,
+    LED_SET_AT,
+    LED_READ
 };
 
 
