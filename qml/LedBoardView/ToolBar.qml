@@ -1,13 +1,12 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
-import QtQuick.Window 2.2
 
 Rectangle
 {
     property alias fillTool: fillTool
     id: toolBar
-    width: Screen.width/11
-    height: Screen.height - topBar.height
+    width: parent.width/11
+    height: parent.height - topBar.height
     x: 0
     y: topBar.height
 

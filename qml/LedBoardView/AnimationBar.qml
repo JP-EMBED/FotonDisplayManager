@@ -1,15 +1,14 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
-import QtQuick.Window 2.2
 
 Rectangle
 {
     property alias inputBox: inputBox
     property alias undoButton: undoButton
     id: animationBar
-    width: Screen.width/11
-    height: Screen.height - topBar.height
-    x: Screen.width - animationBar.width
+    width: parent.width/11
+    height: parent.height - topBar.height
+    x: parent.width - animationBar.width
     y: topBar.height
 
     //horizontal gradient

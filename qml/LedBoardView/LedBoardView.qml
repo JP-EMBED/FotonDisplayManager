@@ -1,5 +1,4 @@
 import QtQuick 2.4
-import QtQuick.Window 2.2
 import "../ColorPicker"
 import "../FExplorer"
 
@@ -7,8 +6,8 @@ import "../FExplorer"
 Rectangle
 {
     id: mainWindow
-    width: Screen.width
-    height: Screen.height
+    width: parent.width
+    height: parent.height
     visible: true
     color: "black"
 
@@ -31,8 +30,8 @@ Rectangle
     AnimationBar{id:animationBar}
 
 
-    ColorPicker{id:colorPicker; width:Screen.width*5/8; height: Screen.height*5/8; y:topBar.height+4; x:Screen.width*-1}
-    FExplorer{id:fExplorer; x: Screen.width*-1}
+    ColorPicker{id:colorPicker; width:parent.width*4/8; height: parent.height*4/8; y:topBar.height+4; x:parent.width*-1}
+    FExplorer{id:fExplorer; x: parent.width*-1}
 
     function displayGrid()
     {

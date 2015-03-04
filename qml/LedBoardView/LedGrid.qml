@@ -1,5 +1,4 @@
 import QtQuick 2.4
-import QtQuick.Window 2.2
 
 Rectangle
 {
@@ -12,9 +11,9 @@ Rectangle
     property real startY: 0
     property real currentX: square.x
     property real currentY: square.y
-    width: Screen.height - topBar.height
+    width: parent.height - topBar.height
     height: square.width
-    x: (Screen.width/2 - square.width/2)
+    x: (parent.width/2 - square.width/2)
     y: topBar.height
     color: Qt.rgba(.7,.7,.7,1)
     transform: Scale { id: squareScale; origin.x: square.height/2; origin.y: square.width/2; xScale: 1; yScale: 1}
@@ -23,7 +22,7 @@ Rectangle
     Rectangle
     {
         id: selectionBox
-        z: -1
+        z: 2
         color: "#00000000"
         border.width: 10
         border.color: 'white'
@@ -43,15 +42,18 @@ Rectangle
         touchPoints: [TouchPoint { id: point1 }, TouchPoint { id: point2 }]
         onPressed:
         {
+            var x = point1.x/(square.width/32)
+            var y = point1.y/(square.height/32)
 
             square.currentScale = squareScale.xScale
 
+            //within square
             if((point1.x < square.width && point1.y < square.height) && (point1.x > 0 && point1.y > 0))
             {
                     if (square.selectedTool == "Pen")
                     {
-                        var row = Math.floor(point1.y/(square.height/32));
-                        var col = Math.floor(point1.x/(square.height/32));
+                        var row = Math.floor(y);
+                        var col = Math.floor(x);
                         changeMade();
                         LedGrid.ledPressed(col, row);
                         LedBoardManager.sendLedSet(col, row);
@@ -62,28 +64,33 @@ Rectangle
             if (square.selectedTool == "Fill")
             {
                 changeMade()
-                LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
+                LedGrid.fillBucket(Math.floor(x), Math.floor(y))
                 displayGrid()
 
             }
             else if (square.selectedTool == "BoxSelect")
             {
+                var originX = Math.round(selectionBox.originX/(square.width/32))
+                var originY = Math.round(selectionBox.originY/(square.width/32))
+                var endX = Math.round(selectionBox.endX/(square.width/32))
+                var endY = Math.round(selectionBox.endY/(square.width/32))
+
                 if (selectionBox.rotation == 0 && !(selectionBox.x < point1.x && point1.x < (selectionBox.x + selectionBox.width) &&
                                                     selectionBox.y < point1.y && point1.y < (selectionBox.y + selectionBox.height)))
                 {
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade();
-                        LedGrid.copyPage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
-                        LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        LedGrid.pastePage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
+                        LedGrid.copyPage(2, originX, originY, endX, endY)
+                        LedGrid.fillBucket( Math.floor(x), Math.floor(y) )
+                        LedGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
                     {
-                        selectionBox.originX = ((Math.round(point1.x/(square.width/32)))*(square.width/32)); selectionBox.originY = (Math.round((point1.y/(square.height/32)))*(square.width/32))
+                        selectionBox.originX = (Math.round(x)*(square.width/32))
+                        selectionBox.originY = (Math.round(y)*(square.width/32))
                         selectionBox.x = selectionBox.originX; selectionBox.y = selectionBox.originY;
-                        selectionBox.z = 100
                         selectionBox.placed = 0
                         selectionBox.width = 0; selectionBox.height = 0
                     }
@@ -94,18 +101,18 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
-                        LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        LedGrid.pastePage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
+                        LedGrid.copyPage(2, originX, originY, endX, endY)
+                        LedGrid.fillBucket( Math.floor(x), Math.floor(y))
+                        LedGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
                     {
-                    selectionBox.originX = ((Math.round(point1.x/(square.width/32)))*(square.width/32)); selectionBox.originY = (Math.round((point1.y/(square.height/32)))*(square.width/32))
-                    selectionBox.x = selectionBox.originX; selectionBox.y = selectionBox.originY;
-                    selectionBox.z = 100
-                    selectionBox.placed = 0
-                    selectionBox.width = 0; selectionBox.height = 0
+                        selectionBox.originX = (Math.round(x)*(square.width/32));
+                        selectionBox.originY = (Math.round(y)*(square.width/32))
+                        selectionBox.x = selectionBox.originX; selectionBox.y = selectionBox.originY;
+                        selectionBox.placed = 0
+                        selectionBox.width = 0; selectionBox.height = 0
                     }
                 }
                 else if (selectionBox.rotation == 180 && !(selectionBox.x > point1.x && point1.x > (selectionBox.x - selectionBox.width) &&
@@ -114,16 +121,16 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2,Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
-                        LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        LedGrid.pastePage(2,Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
+                        LedGrid.copyPage(2,originX, originY, endX, endY)
+                        LedGrid.fillBucket(Math.floor(x), Math.floor(y))
+                        LedGrid.pastePage(2,originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
                     {
-                        selectionBox.originX = ((Math.round(point1.x/(square.width/32)))*(square.width/32)); selectionBox.originY = (Math.round((point1.y/(square.height/32)))*(square.width/32))
+                        selectionBox.originX = (Math.round(x)*(square.width/32));
+                        selectionBox.originY = (Math.round(y)*(square.width/32))
                         selectionBox.x = selectionBox.originX; selectionBox.y = selectionBox.originY;
-                        selectionBox.z = 100
                         selectionBox.placed = 0
                         selectionBox.width = 0; selectionBox.height = 0
                     }
@@ -134,16 +141,16 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
-                        LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0)
-                        LedGrid.pastePage(2, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
+                        LedGrid.copyPage(2, originX, originY, endX, endY)
+                        LedGrid.fillBucket(Math.floor(x), Math.floor(y))
+                        LedGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
                     {
-                        selectionBox.originX = ((Math.round(point1.x/(square.width/32)))*(square.width/32)); selectionBox.originY = (Math.round((point1.y/(square.height/32)))*(square.width/32))
+                        selectionBox.originX = (Math.round(x)*(square.width/32));
+                        selectionBox.originY = (Math.round(y)*(square.width/32))
                         selectionBox.x = selectionBox.originX; selectionBox.y = selectionBox.originY;
-                        selectionBox.z = 100
                         selectionBox.placed = 0
                         selectionBox.width = 0; selectionBox.height = 0
                     }
@@ -151,7 +158,7 @@ Rectangle
                 else if (toolBar.fillTool.altUse == 1)
                 {
                     changeMade()
-                    LedGrid.fillBucket((point1.x/(square.width/32))|0, (point1.y/(square.height/32))|0, Math.round(selectionBox.originX/(square.width/32)), Math.round(selectionBox.originY/(square.width/32)), Math.round(selectionBox.endX/(square.width/32)), Math.round(selectionBox.endY/(square.width/32)))
+                    LedGrid.fillBucket(Math.floor(x), Math.floor(y), originX, originY, endX, endY)
                     displayGrid()
                 }
             }
@@ -267,7 +274,7 @@ Rectangle
             {
                 squareScale.xScale = 1
                 squareScale.yScale = 1
-                square.x = (Screen.width/2 - square.width/2)
+                square.x = (parent.width/2 - square.width/2)
                 square.y = topBar.height
             }
 

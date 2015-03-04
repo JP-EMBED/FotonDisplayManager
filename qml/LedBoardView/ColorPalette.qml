@@ -1,7 +1,4 @@
 import QtQuick 2.4
-import QtQuick.Window 2.2
-
-
 
 Rectangle
 {
@@ -44,7 +41,7 @@ Rectangle
                         colorButton3.border.color = "black";
                         colorButton4.border.color = "black";
                         colorButton5.border.color = "black";
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.colorUse0 = 1;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -58,7 +55,7 @@ Rectangle
                     }
                     else
                     {
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.color = colorPicker.pickedColor;
                         colorButton0.colorUse0 = 1;
                         LedGrid.colorSelect(parent.color);
@@ -93,7 +90,7 @@ Rectangle
                         colorButton3.border.color = 'black'
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 1;
                         colorButton2.colorUse2 = 0;
@@ -108,7 +105,7 @@ Rectangle
                     }
                     else
                     {
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton1.color = colorPicker.pickedColor;
                         colorButton1.colorUse1 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -143,7 +140,7 @@ Rectangle
                         colorButton3.border.color = 'black'
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 1;
@@ -157,7 +154,7 @@ Rectangle
                     }
                     else
                     {
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton2.color = colorPicker.pickedColor;
                         colorButton2.colorUse2 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -191,7 +188,7 @@ Rectangle
                         colorButton3.border.color = "#FFB01C"
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -206,7 +203,7 @@ Rectangle
                     }
                     else
                     {
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton3.color = colorPicker.pickedColor;
                         colorButton3.colorUse3 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -240,7 +237,7 @@ Rectangle
                         colorButton3.border.color = 'black'
                         colorButton4.border.color = "#FFB01C"
                         colorButton5.border.color = 'black'
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -255,7 +252,7 @@ Rectangle
                     }
                     else
                     {
-                        colorPicker.x = Screen.width*-1;
+                        colorPicker.x = mainWindow.width*-1;
                         colorButton4.color = colorPicker.pickedColor;
                         colorButton4.colorUse4 = 1;
                         LedGrid.colorSelect(parent.color)

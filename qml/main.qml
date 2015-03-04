@@ -10,6 +10,7 @@ ApplicationWindow
     id: mainWindow
     width: ScreenWidth
     height: ScreenHeight
+
     LedBoardView{
         id:boardView
     }
