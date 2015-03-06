@@ -53,7 +53,10 @@ DISTFILES += \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew \
-    android/gradlew.bat
+    android/gradlew.bat \
+    qml/CameraView/CameraView.qml \
+    qml/CameraView/TitleBar.qml \
+    qml/CameraView/ToolBar.qml
 
 HEADERS += \
     connectionmanager.h \

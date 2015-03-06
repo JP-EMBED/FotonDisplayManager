@@ -174,6 +174,30 @@ Rectangle
                 }
             }
          }
+         Rectangle
+         {
+            id: cameraButton
+            height: open.height
+            width: open.width
+            radius: open.radius
+            border.width: 6
+            border.color: 'black'
+
+            Image{
+                anchors.fill: parent
+                anchors.margins: 8
+                source: "images/camera.png"
+            }
+
+            MouseArea
+            {
+                anchors.fill:parent
+                onClicked:
+                {
+                    camView.showCameraView();
+                }
+            }
+         }
          /*
          Rectangle{height: animationBar.height/20; width: animationBar.width; color: "transparent"}
          Rectangle

@@ -15,5 +15,10 @@
         <file>qml/LedBoardView/ToolBar.qml</file>
         <file>qml/LedBoardView/LedGrid.qml</file>
         <file>qml/ConnectionMenu/FindDeviceMenu.qml</file>
+        <file>qml/CameraView/CameraView.qml</file>
+        <file>qml/CameraView/TitleBar.qml</file>
+        <file>qml/CameraView/ToolBar.qml</file>
+        <file>qml/CameraView/images/back.png</file>
+        <file>qml/LedBoardView/images/camera.png</file>
     </qresource>
 </RCC>
