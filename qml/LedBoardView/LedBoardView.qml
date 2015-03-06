@@ -42,7 +42,7 @@ Rectangle
             var color = LedGrid.getLedColor(i);
             square.grid.itemAt(i).color = color;
             LedBoardManager.sendLedColor(color);
-            LedBoardManager.sendLedSet(row, col);
+            LedBoardManager.sendLedSet(col, row);
         }
         LedBoardManager.sendLedColor(LedGrid.getColor());
     }
@@ -53,8 +53,7 @@ Rectangle
         {
             LedGrid.flipPage(dir)
             animationBar.inputBox.text = LedGrid.getDuration()/1000
-            for(var i = 0; i < 1024;i++)
-                square.grid.itemAt(i).color = LedGrid.getLedColor(i);
+            displayGrid();
         }
         changeMade()
     }
