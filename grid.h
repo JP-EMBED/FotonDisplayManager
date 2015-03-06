@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QDir>
 #include <QColor>
+#include "ledboardmanager.h"
 
 class Grid : public QObject
 {
@@ -11,7 +12,7 @@ class Grid : public QObject
     friend class FExplorer;
 
     public:
-        Grid(QObject *parent = nullptr);
+        Grid(QObject *parent, LedBoardManager*  brdManager);
         ~Grid();
 
         void fillBucket(int x, int y, QColor color, const int & startX, const int & startY, const int & endX, const int & endY);
@@ -65,5 +66,6 @@ class Grid : public QObject
         QColor m_color;
 
         int* m_duration;//Holds duration, and type of transition dynamic (considering changing to struct)
+        LedBoardManager*   m_brdManager;
 };
 #endif

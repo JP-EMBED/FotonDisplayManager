@@ -38,10 +38,10 @@ int main(int argc, char *argv[])
         screen_height = temp_width;
     }
 
-	Grid grid;
+    LedBoardManager   brdManager(nullptr,&app);
+    Grid grid(nullptr, &brdManager);
     FExplorer explorer(&grid);
 	Foton foton(&grid, &explorer);
-    LedBoardManager   brdManager(nullptr,&app);
     engine.rootContext()->setContextProperty("ScreenWidth",screen_width);
     engine.rootContext()->setContextProperty("ScreenHeight",screen_height);
     engine.rootContext()->setContextProperty("LedBoardManager", &brdManager);

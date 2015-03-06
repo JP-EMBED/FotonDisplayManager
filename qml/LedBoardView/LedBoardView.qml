@@ -39,9 +39,12 @@ Rectangle
         {
             var row = i/32;
             var col = Math.floor(i%32);
-            square.grid.itemAt(i).color = LedGrid.getLedColor(i);
+            var color = LedGrid.getLedColor(i);
+            square.grid.itemAt(i).color = color;
+            LedBoardManager.sendLedColor(color);
             LedBoardManager.sendLedSet(row, col);
         }
+        LedBoardManager.sendLedColor(LedGrid.getColor());
     }
 
     function flipPage(dir)

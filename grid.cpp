@@ -1,8 +1,8 @@
 #include "grid.h"
 
 
-Grid::Grid(QObject *parent)
-    :QObject(parent), m_currentPage(0), m_copyFlag(0), m_lastPage(1), m_color("red")
+Grid::Grid(QObject *parent, LedBoardManager*  brdManager)
+    :QObject(parent), m_currentPage(0), m_copyFlag(0), m_lastPage(1), m_color("red"), m_brdManager(brdManager)
 {
     QColor off("black");
     m_LEDColor = new QColor*;
@@ -236,6 +236,7 @@ void Grid::fillBucket(int x, int y, int startX, int startY, int endX, int endY)
 void Grid::fillBucket(int x, int y, QColor color, const int & startX,const int & startY, const int & endX, const int & endY)
 {
     m_LEDColor[m_currentPage][x+y*32] = m_color;
+    m_brdManager->sendLedSet(x,y);
 
     //qDebug() << QString::number(x)<< QString::number(y);
     if ( y < endY && y < 31 && m_LEDColor[m_currentPage][x+(y+1)*32] == color)
