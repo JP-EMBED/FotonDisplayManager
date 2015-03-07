@@ -20,5 +20,12 @@
         <file>qml/CameraView/ToolBar.qml</file>
         <file>qml/CameraView/images/back.png</file>
         <file>qml/LedBoardView/images/camera.png</file>
+        <file>qml/TitleView/TitleView.qml</file>
+        <file>qml/TitleView/images/background.png</file>
+        <file>qml/ledscreencomponent/LedScreen.qml</file>
+        <file>qml/ledscreencomponent/images/led_off.png</file>
+        <file>qml/ledscreencomponent/images/led_on.png</file>
+        <file>qml/TitleView/fonts/Rocker.ttf</file>
+        <file>qml/TitleView/TitleButton.qml</file>
     </qresource>
 </RCC>

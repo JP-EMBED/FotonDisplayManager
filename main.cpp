@@ -5,7 +5,7 @@
 #include <QScreen>
 //#include "serialconnectionmanager.h"
 #include "Foton.h"
-
+#include <QFont>
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     int  screen_height;
     bool show_expanded(true);
     QString display_mode("FullScreen");
-
 
     show_expanded = false; // Uncomment for FULLSCREEN
 

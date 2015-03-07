@@ -56,7 +56,10 @@ DISTFILES += \
     android/gradlew.bat \
     qml/CameraView/CameraView.qml \
     qml/CameraView/TitleBar.qml \
-    qml/CameraView/ToolBar.qml
+    qml/CameraView/ToolBar.qml \
+    qml/TitleView/TitleView.qml \
+    qml/ledscreencomponent/LedScreen.qml \
+    qml/TitleView/TitleButton.qml
 
 HEADERS += \
     connectionmanager.h \
@@ -83,6 +86,7 @@ OTHER_FILES += \
     qml/LedBoardView/LedBoardView.qml \
     qml/LedBoardView/LedGrid.qml \
     qml/LedBoardView/ToolBar.qml \
-    qml/ConnectionMenu/FindDeviceMenu.qml
+    qml/ConnectionMenu/FindDeviceMenu.qml \
+    qml/ledscreencomponent/LedScreen.qml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
