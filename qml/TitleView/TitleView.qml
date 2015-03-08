@@ -34,7 +34,7 @@ Rectangle {
             font.pixelSize: height * .8
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text:"Display Manager"
+            text:"Foton"
             font.family: titleFont.name
         }
     }

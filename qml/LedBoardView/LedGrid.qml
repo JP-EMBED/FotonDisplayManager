@@ -39,6 +39,7 @@ Rectangle
         id: squareMultiTouch
         anchors.fill: parent
         maximumTouchPoints: 2
+        enabled: !colorPicker.visible
         touchPoints: [TouchPoint { id: point1 }, TouchPoint { id: point2 }]
         onPressed:
         {

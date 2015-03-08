@@ -25,12 +25,12 @@ Rectangle
     }
 
     LedGrid{id:square}
-    ColorPalette{id:topBar}
+    ColorPalette{id:topBar;}
     ToolBar{id:toolBar}
     AnimationBar{id:animationBar}
 
 
-    ColorPicker{id:colorPicker; width:parent.width*4/8; height: parent.height*4/8; y:topBar.height+4; x:parent.width*-1}
+    ColorPicker{id:colorPicker; width:parent.width*4/8; height: parent.height*4/8; y:topBar.height+4; x:parent.width*-1; visible: false}
     FExplorer{id:fExplorer; x: parent.width*-1}
 
     function displayGrid()

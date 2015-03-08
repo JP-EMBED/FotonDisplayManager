@@ -1,3 +1,5 @@
+
+#define NOT_ANDROID_OS
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "ledboardmanager.h"
@@ -6,6 +8,8 @@
 //#include "serialconnectionmanager.h"
 #include "Foton.h"
 #include <QFont>
+
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);

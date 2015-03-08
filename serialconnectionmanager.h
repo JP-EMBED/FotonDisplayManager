@@ -1,8 +1,11 @@
 #ifndef SERIALCONNECTIONMANAGER_H
 #define SERIALCONNECTIONMANAGER_H
 
+#define NOT_ANDROID_OS
 #include "iConnection.h"
+#ifdef NOT_ANDROID_OS
 #include <QSerialPort>
+#endif
 class SerialConnectionManager : public iConnection
 {
 
@@ -19,15 +22,17 @@ public slots:
     void connectToDevice(QString device_name, QString addr, QString pin = "");
 
 protected slots:
+    #ifdef NOT_ANDROID_OS
     void serialDisconnected(QSerialPort::SerialPortError error);
+    #endif
     void connectToTargetSocket();
     void deviceDiscovered();
 
 protected:
     QStringList serviceEnumToStrList();
-
+#ifdef NOT_ANDROID_OS
     QSerialPort      mSerialPort;
-
+#endif
 };
 
 #endif // SERIALCONNECTIONMANAGER_H

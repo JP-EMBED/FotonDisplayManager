@@ -43,6 +43,7 @@ Rectangle
                         colorButton4.border.color = "black";
                         colorButton5.border.color = "black";
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.colorUse0 = 1;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -52,11 +53,13 @@ Rectangle
                     else if (colorButton0.colorUse0 == 1)
                     {
                         colorPicker.x = 180;
+                        colorPicker.visible = true;
                         colorButton0.colorUse0 = 2;
                     }
                     else
                     {
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.color = colorPicker.pickedColor;
                         colorButton0.colorUse0 = 1;
                         LedGrid.colorSelect(parent.color);
@@ -93,6 +96,7 @@ Rectangle
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 1;
                         colorButton2.colorUse2 = 0;
@@ -103,11 +107,13 @@ Rectangle
                     else if (colorButton1.colorUse1 == 1)
                     {
                         colorPicker.x = 180;
+                        colorPicker.visible = true;
                         colorButton1.colorUse1 = 2;
                     }
                     else
                     {
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton1.color = colorPicker.pickedColor;
                         colorButton1.colorUse1 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -144,6 +150,7 @@ Rectangle
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 1;
@@ -153,11 +160,13 @@ Rectangle
                     else if (colorButton2.colorUse2 == 1)
                     {
                         colorPicker.x = 180;
+                        colorPicker.visible = true;
                         colorButton2.colorUse2 = 2;
                     }
                     else
                     {
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton2.color = colorPicker.pickedColor;
                         colorButton2.colorUse2 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -193,6 +202,7 @@ Rectangle
                         colorButton4.border.color = 'black'
                         colorButton5.border.color = 'black'
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -203,11 +213,13 @@ Rectangle
                     else if (colorButton3.colorUse3 == 1)
                     {
                         colorPicker.x = 180;
+                        colorPicker.visible = true;
                         colorButton3.colorUse3 = 2;
                     }
                     else
                     {
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton3.color = colorPicker.pickedColor;
                         colorButton3.colorUse3 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -243,6 +255,7 @@ Rectangle
                         colorButton4.border.color = "#FFB01C"
                         colorButton5.border.color = 'black'
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton0.colorUse0 = 0;
                         colorButton1.colorUse1 = 0;
                         colorButton2.colorUse2 = 0;
@@ -253,11 +266,13 @@ Rectangle
                     else if (colorButton4.colorUse4 == 1)
                     {
                         colorPicker.x = 180;
+                        colorPicker.visible = true;
                         colorButton4.colorUse4 = 2;
                     }
                     else
                     {
                         colorPicker.x = mainWindow.width*-1;
+                        colorPicker.visible = false;
                         colorButton4.color = colorPicker.pickedColor;
                         colorButton4.colorUse4 = 1;
                         LedGrid.colorSelect(parent.color)
@@ -282,6 +297,8 @@ Rectangle
                 {
                     LedGrid.colorSelect(parent.color)
                     LedBoardManager.sendLedColor(parent.color);
+                    colorPicker.x = mainWindow.width*-1;
+                    colorPicker.visible = false;
                     colorButton0.border.color = 'black'
                     colorButton1.border.color = 'black'
                     colorButton2.border.color = 'black'
