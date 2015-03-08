@@ -4,14 +4,34 @@ import QtMultimedia 5.4
 Rectangle {
     id:camView
     visible:false
+    property bool viewFinderMode: true
     function showCameraView(){
+        openCameraView.start();
         frontCamera.cameraState = Camera.ActiveState;
         camView.visible = true;
-        openCameraView.start();
+
     }
     function hideCameraView(){
-        frontCamera.cameraState = Camera.UnloadedState
         closeCameraView.start();
+        frontCamera.cameraState = Camera.UnloadedState
+        viewFinder.visible = true;
+        previewImage.visible = false
+        cropBox.visible = false
+        viewFinderMode = true
+
+    }
+    Connections{
+        target: LEDImageGenerator
+        onUpdatedLed:{
+            LedBoardManager.sendLedColor(color_in);
+            FotonGrid.ledPressed(col_in, row_in);
+            LedBoardManager.sendLedSet(col_in, row_in);
+            boardView.ledBoard.itemAt(col_in + row_in*32).color = color_in
+        }
+        onFinishedGeneratingImage:
+        {
+            hideCameraView();
+        }
     }
 
     TitleBar{
@@ -28,18 +48,21 @@ Rectangle {
         position:Camera.FrontFace
         imageCapture{
             id:capturer
-            resolution: Qt.size(320,240)
+            resolution: Qt.size(1280,720)
             onImageCaptured: {
                 previewImage.source = preview;
+                previewImage.visible = true
+                cropBox.visible = true
             }
         }
     }
     Image{
         id:previewImage
-        anchors.top: titleBar.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: toolBar.top
+        anchors.centerIn: parent
+        width:1280
+        height:720
+        sourceSize.width:1280
+        sourceSize.height:720
     }
 
     VideoOutput{
@@ -50,32 +73,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: toolBar.top
     }
-    Rectangle{
-        height:80
-        width: 80
-        anchors.top: viewFinder.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        color: "red"
-        Text{
-            text:"Click"
-            anchors.fill: parent
-        }
-    }
-    ListView {
-            anchors.left: parent.left
-            height:parent.height
-            width: parent.width/3
 
-            model: QtMultimedia.availableCameras
-            delegate: Text {
-                text: modelData.displayName
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: camera.deviceId = modelData.deviceId
-                }
-            }
-        }
     ToolBar{
         id: toolBar
         width: parent.width
@@ -89,22 +87,46 @@ Rectangle {
         color: "transparent"
         border.width: parent.width/200
         border.color: 'white'
+        visible: false
         transformOrigin: Item.Center
         width: 320
         height: width
-        x: viewFinder.x+40
-        y: viewFinder.y+40
+        x: previewImage.x+40
+        y: previewImage.y+40
         z:viewFinder.z +2
         MouseArea{
             anchors.fill: parent
             drag.target: cropBox
             drag.axis: Drag.XAndYAxis
-            drag.minimumX: 0
-            drag.minimumY: 0
-            drag.maximumX: previewImage.width
-            drag.maximumY: previewImage.height
+            drag.minimumX: previewImage.x
+            drag.minimumY: previewImage.y
+            drag.maximumX: (previewImage.x +previewImage.width - 320)
+            drag.maximumY: (previewImage.y +previewImage.height - 320)
+        }
+        PinchArea{
+            id:pincharea
+            enabled:false
+            anchors.fill: parent
+            property double oldZoom: 1
+            onPinchStarted: {
+                oldZoom = pinch.scale
+            }
+            onPinchUpdated: {
+                if(oldZoom  < pinch.scale)
+                {
+                    cropBox.height = cropBox.height + (cropBox.count * 1)
+                    cropBox.width = cropBox.width + (cropBox.count * 1)
+                }
+                else
+                {
+                    cropBox.height = cropBox.height - (cropBox.count * 5)
+                    cropBox.width = cropBox.width - (cropBox.count * 5)
+                }
+            }
         }
     }
+
+
     NumberAnimation on y{
         id: openCameraView
         duration: 500;

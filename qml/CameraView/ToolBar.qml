@@ -4,7 +4,6 @@ Rectangle {
     id: toolBarContainer
     border.color: "lightsteelblue"
     border.width: 2
-    property bool viewFinderMode: true
     gradient: Gradient {
         GradientStop {
             position: 0.00;
@@ -57,7 +56,7 @@ Rectangle {
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            text:toolBarContainer.viewFinderMode ? "Capture Image":"Try Again"
+            text:viewFinderMode ? "Capture Image":"Try Again"
             color:"white"
             font.pixelSize: parent.width/text.length
         }
@@ -69,15 +68,47 @@ Rectangle {
                 {
                     frontCamera.imageCapture.capture();
                     previewImage.z = viewFinder.z+1;
+                    viewFinder.visible = false;
+                    cropBox.visible = true
                     viewFinderMode = false;
                 }
                 else
                 {
                     previewImage.z = viewFinder.z-1;
+                    viewFinder.visible = true;
+                    cropBox.visible = false
                     viewFinderMode = true;
                 }
             }
         }
+    }
+    Rectangle{
+        id:saveButton
+        height:parent.height
+        width: parent.width/10
+        anchors.right:parent.right
+        anchors.topMargin:1
+        anchors.bottomMargin:1
+        anchors.verticalCenter:  parent.verticalCenter
+        border.color: "darkgrey"
+        border.width: 2
+        color:"black"
+        Text{
+            anchors.fill: parent
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            text:"Set to Board"
+            color:"white"
+            font.pixelSize: parent.width/text.length
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                LEDImageGenerator.setPicture(previewImage.source,(cropBox.x - previewImage.x),
+                                             (cropBox.y - previewImage.y));
+            }
+        }
+
     }
 }
 

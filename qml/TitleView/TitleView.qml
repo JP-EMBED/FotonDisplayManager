@@ -31,10 +31,10 @@ Rectangle {
 
         Text{
             anchors.fill: parent
-            font.pixelSize: height * .8
+            font.pixelSize: height * .84
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text:"Foton"
+            text:"Display Manager"
             font.family: titleFont.name
         }
     }

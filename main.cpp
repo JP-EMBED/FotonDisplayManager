@@ -1,5 +1,4 @@
 
-#define NOT_ANDROID_OS
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "ledboardmanager.h"
@@ -8,7 +7,7 @@
 //#include "serialconnectionmanager.h"
 #include "Foton.h"
 #include <QFont>
-
+#include "ledimagegenerator.h"
 
 int main(int argc, char *argv[])
 {
@@ -44,10 +43,12 @@ int main(int argc, char *argv[])
     LedBoardManager   brdManager(nullptr,&app);
     Grid grid(nullptr, &brdManager);
     FExplorer explorer(&grid);
+    LEDImageGenerator   imageGen(&engine);
 	Foton foton(&grid, &explorer);
     engine.rootContext()->setContextProperty("ScreenWidth",screen_width);
     engine.rootContext()->setContextProperty("ScreenHeight",screen_height);
     engine.rootContext()->setContextProperty("LedBoardManager", &brdManager);
+    engine.rootContext()->setContextProperty("LEDImageGenerator", &imageGen);
 	engine.rootContext()->setContextProperty("Foton", &foton);
     engine.rootContext()->setContextProperty("FotonGrid", &grid);
     engine.rootContext()->setContextProperty("explorer", &explorer);

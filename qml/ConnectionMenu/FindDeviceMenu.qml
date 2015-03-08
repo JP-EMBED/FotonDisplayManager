@@ -32,6 +32,7 @@ Rectangle {
 
             busy.running = false;
             console.log("Connected to " + deviceID);
+            LedBoardManager.sendLedColor(Qt.rgba(1,0,0,1))
             topRect.visible = false;
             boardView.visible = true;
         }

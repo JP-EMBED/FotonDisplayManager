@@ -6,6 +6,7 @@ import "../FExplorer"
 Rectangle
 {
     property alias inputBox: animationBar.inputBox
+    property alias ledBoard: square.grid
     id: mainWindow
     width: parent.width
     height: parent.height

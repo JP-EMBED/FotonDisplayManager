@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     FExplorer.cpp \
     Foton.cpp \
     grid.cpp \
-    serialconnectionmanager.cpp
+    serialconnectionmanager.cpp \
+    ledimagegenerator.cpp
 
 RESOURCES += qml.qrc
 
@@ -69,7 +70,8 @@ HEADERS += \
     FExplorer.h \
     Foton.h \
     grid.h \
-    serialconnectionmanager.h
+    serialconnectionmanager.h \
+    ledimagegenerator.h
 
 OTHER_FILES += \
     qml/main.qml \
