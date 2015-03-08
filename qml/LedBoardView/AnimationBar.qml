@@ -41,10 +41,11 @@ Rectangle
             text: "Clear"
             onClicked:
             {
-                LedGrid.clearBoard()
+                FotonGrid.clearBoard()
                 LedBoardManager.sendClearBoard();
                 for(var i = 0; i < 1024;i++)
                     square.grid.itemAt(i).color = 'black'
+                LedBoardManager.sendLedColor(FotonGrid.getColor());
             }
          }
         //spacer
@@ -87,7 +88,7 @@ Rectangle
                 }
                 onAccepted:
                 {
-                    LedGrid.setDuration(inputBox.text * 1000);
+                    FotonGrid.setDuration(inputBox.text * 1000);
                 }
 
             }
@@ -127,11 +128,11 @@ Rectangle
             {
                 if (square.selectedTool == "BoxSelect")
                 {
-                   LedGrid.copyPage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
+                   FotonGrid.copyPage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
                 }
                 else
                 {
-                    LedGrid.copyPage()
+                    FotonGrid.copyPage()
                 }
             }
         }
@@ -142,13 +143,13 @@ Rectangle
             text: "Paste"
             onClicked:
             {
-                if(LedGrid.getCopyFlag() > 0)
+                if(FotonGrid.getCopyFlag() > 0)
                 {
                     changeMade()
                     if (square.selectedTool == "BoxSelect")
-                        LedGrid.pastePage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
+                        FotonGrid.pastePage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
                     else
-                        LedGrid.pastePage()
+                        FotonGrid.pastePage()
                     displayGrid()
                 }
 
@@ -163,11 +164,11 @@ Rectangle
             text: "Add"
             onClicked:
             {
-                LedGrid.insertPage()
+                FotonGrid.insertPage()
 
                 changeMade()
                 displayGrid()
-                inputBox.text = LedGrid.getDuration()/1000
+                inputBox.text = FotonGrid.getDuration()/1000
             }
         }
         Button
@@ -178,10 +179,10 @@ Rectangle
             text: "Delete"
             onClicked:
             {
-                LedGrid.deletePage()
+                FotonGrid.deletePage()
 
                 displayGrid()
-                inputBox.text = LedGrid.getDuration()/1000
+                inputBox.text = FotonGrid.getDuration()/1000
             }
         }
         Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
@@ -194,7 +195,7 @@ Rectangle
             text: redo ? "Redo":"Undo"
             onClicked:
             {
-                LedGrid.undoPage();
+                FotonGrid.undoPage();
                 displayGrid();
                 undoButton.redo = undoButton.redo ^ 1;
             }

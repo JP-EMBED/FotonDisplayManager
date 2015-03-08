@@ -1,5 +1,4 @@
 import QtQuick 2.4
-import QtQuick.Window 2.2
 
 Rectangle
 {
@@ -35,7 +34,7 @@ Rectangle
 
             onClicked:
             {
-                background.x = Screen.width*-1
+                background.x = mainWindow.width*-1
             }
         }
 
@@ -195,8 +194,8 @@ Rectangle
                         display()
                         displayGrid()
                     }
-                    inputBox.text = LedGrid.getDuration()/1000
-                    background.x = Screen.width*-1
+                    inputBox.text = FotonGrid.getDuration()/1000
+                    background.x = mainWindow.width*-1
                 }
             }
         }

@@ -5,6 +5,7 @@ import "../FExplorer"
 
 Rectangle
 {
+    property alias inputBox: animationBar.inputBox
     id: mainWindow
     width: parent.width
     height: parent.height
@@ -14,12 +15,12 @@ Rectangle
     Timer
     {
         id: animationTimer
-        interval: LedGrid.getDuration()
+        interval: FotonGrid.getDuration()
         running: false
         onTriggered:
         {
             flipPage(1);
-            animationTimer.interval = LedGrid.getDuration();
+            animationTimer.interval = FotonGrid.getDuration();
             animationTimer.restart();
         }
     }
@@ -39,20 +40,20 @@ Rectangle
         {
             var row = i/32;
             var col = Math.floor(i%32);
-            var color = LedGrid.getLedColor(i);
+            var color = FotonGrid.getLedColor(i);
             square.grid.itemAt(i).color = color;
             LedBoardManager.sendLedColor(color);
             LedBoardManager.sendLedSet(col, row);
         }
-        LedBoardManager.sendLedColor(LedGrid.getColor());
+        LedBoardManager.sendLedColor(FotonGrid.getColor());
     }
 
     function flipPage(dir)
     {
-        if (LedGrid.getPages() > 1)
+        if (FotonGrid.getPages() > 1)
         {
-            LedGrid.flipPage(dir)
-            animationBar.inputBox.text = LedGrid.getDuration()/1000
+            FotonGrid.flipPage(dir)
+            animationBar.inputBox.text = FotonGrid.getDuration()/1000
             displayGrid();
         }
         changeMade()
@@ -60,7 +61,7 @@ Rectangle
 
     function changeMade()
     {
-        LedGrid.copyPage(1);
+        FotonGrid.copyPage(1);
         animationBar.undoButton.redo = 0;
     }
 }

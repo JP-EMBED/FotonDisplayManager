@@ -2,11 +2,11 @@
 
 
 FExplorer::FExplorer(Grid* grid)
-    :m_directory("/./sdcard"), m_list(), m_file(),m_grid(grid)
+    :m_directory(QDir::home()), m_list(), m_file(),m_grid(grid)
 {
     QString name;
 
-    if (!m_directory.cd("Foton"))
+    /*if (!m_directory.cd("Foton"))
     {
         m_directory.mkdir("Foton");
         m_directory.cd("Foton");
@@ -25,7 +25,7 @@ FExplorer::FExplorer(Grid* grid)
     }
     else
         file.open(QIODevice::ReadOnly);
-    file.close();
+    file.close();*/
 
     m_list = m_directory.entryList(QDir::AllEntries | QDir::NoDot);
 }

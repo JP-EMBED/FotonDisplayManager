@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("ScreenHeight",screen_height);
     engine.rootContext()->setContextProperty("LedBoardManager", &brdManager);
 	engine.rootContext()->setContextProperty("Foton", &foton);
-    engine.rootContext()->setContextProperty("LedGrid", &grid);
+    engine.rootContext()->setContextProperty("FotonGrid", &grid);
     engine.rootContext()->setContextProperty("explorer", &explorer);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

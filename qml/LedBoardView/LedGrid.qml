@@ -56,16 +56,16 @@ Rectangle
                         var row = Math.floor(y);
                         var col = Math.floor(x);
                         changeMade();
-                        LedGrid.ledPressed(col, row);
+                        FotonGrid.ledPressed(col, row);
                         LedBoardManager.sendLedSet(col, row);
-                        repeater.itemAt(col + row*32).color = LedGrid.getColor();
+                        repeater.itemAt(col + row*32).color = FotonGrid.getColor();
                     }
             }
 
             if (square.selectedTool == "Fill")
             {
                 changeMade()
-                LedGrid.fillBucket(Math.floor(x), Math.floor(y))
+                FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
                 displayGrid()
 
             }
@@ -82,9 +82,9 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade();
-                        LedGrid.copyPage(2, originX, originY, endX, endY)
-                        LedGrid.fillBucket( Math.floor(x), Math.floor(y) )
-                        LedGrid.pastePage(2, originX, originY, endX, endY)
+                        FotonGrid.copyPage(2, originX, originY, endX, endY)
+                        FotonGrid.fillBucket( Math.floor(x), Math.floor(y) )
+                        FotonGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
@@ -102,9 +102,9 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2, originX, originY, endX, endY)
-                        LedGrid.fillBucket( Math.floor(x), Math.floor(y))
-                        LedGrid.pastePage(2, originX, originY, endX, endY)
+                        FotonGrid.copyPage(2, originX, originY, endX, endY)
+                        FotonGrid.fillBucket( Math.floor(x), Math.floor(y))
+                        FotonGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
@@ -122,9 +122,9 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2,originX, originY, endX, endY)
-                        LedGrid.fillBucket(Math.floor(x), Math.floor(y))
-                        LedGrid.pastePage(2,originX, originY, endX, endY)
+                        FotonGrid.copyPage(2,originX, originY, endX, endY)
+                        FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
+                        FotonGrid.pastePage(2,originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
@@ -142,9 +142,9 @@ Rectangle
                     if (toolBar.fillTool.altUse == 1)
                     {
                         changeMade()
-                        LedGrid.copyPage(2, originX, originY, endX, endY)
-                        LedGrid.fillBucket(Math.floor(x), Math.floor(y))
-                        LedGrid.pastePage(2, originX, originY, endX, endY)
+                        FotonGrid.copyPage(2, originX, originY, endX, endY)
+                        FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
+                        FotonGrid.pastePage(2, originX, originY, endX, endY)
                         displayGrid()
                     }
                     else
@@ -159,7 +159,7 @@ Rectangle
                 else if (toolBar.fillTool.altUse == 1)
                 {
                     changeMade()
-                    LedGrid.fillBucket(Math.floor(x), Math.floor(y), originX, originY, endX, endY)
+                    FotonGrid.fillBucket(Math.floor(x), Math.floor(y), originX, originY, endX, endY)
                     displayGrid()
                 }
             }
@@ -172,9 +172,9 @@ Rectangle
                     {
                         var row = Math.floor(point1.y/(square.height/32));
                         var col = Math.floor(point1.x/(square.height/32));
-                        LedGrid.ledPressed(col, row);
+                        FotonGrid.ledPressed(col, row);
                         LedBoardManager.sendLedSet(col, row);
-                        repeater.itemAt(col + row*32).color = LedGrid.getColor();
+                        repeater.itemAt(col + row*32).color = FotonGrid.getColor();
                     }
                     else if (square.selectedTool == "Move")
                     {

@@ -34,7 +34,7 @@ Rectangle
                 {
                     if (colorButton0.colorUse0 == 0)
                     {
-                        LedGrid.colorSelect(parent.color);
+                        FotonGrid.colorSelect(parent.color);
                         LedBoardManager.sendLedColor(parent.color);
                         colorButton0.border.color = "#FFB01C";
                         colorButton1.border.color = "black";
@@ -62,7 +62,7 @@ Rectangle
                         colorPicker.visible = false;
                         colorButton0.color = colorPicker.pickedColor;
                         colorButton0.colorUse0 = 1;
-                        LedGrid.colorSelect(parent.color);
+                        FotonGrid.colorSelect(parent.color);
                         LedBoardManager.sendLedColor(parent.color);
                     }
                 }
@@ -87,7 +87,7 @@ Rectangle
                 {
                     if (colorButton1.colorUse1 == 0)
                     {
-                        LedGrid.colorSelect(parent.color);
+                        FotonGrid.colorSelect(parent.color);
                         LedBoardManager.sendLedColor(parent.color);
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = "#FFB01C"
@@ -116,7 +116,7 @@ Rectangle
                         colorPicker.visible = false;
                         colorButton1.color = colorPicker.pickedColor;
                         colorButton1.colorUse1 = 1;
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color);
                     }
                 }
@@ -141,7 +141,7 @@ Rectangle
                 {
                     if (colorButton2.colorUse2 == 0)
                     {
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color);
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
@@ -169,7 +169,7 @@ Rectangle
                         colorPicker.visible = false;
                         colorButton2.color = colorPicker.pickedColor;
                         colorButton2.colorUse2 = 1;
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color);
                     }
                 }
@@ -193,7 +193,7 @@ Rectangle
                 {
                     if (colorButton3.colorUse3 == 0)
                     {
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color);
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
@@ -222,7 +222,7 @@ Rectangle
                         colorPicker.visible = false;
                         colorButton3.color = colorPicker.pickedColor;
                         colorButton3.colorUse3 = 1;
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color)
                     }
                 }
@@ -246,7 +246,7 @@ Rectangle
                 {
                     if (colorButton4.colorUse4 == 0)
                     {
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color);
                         colorButton0.border.color = 'black'
                         colorButton1.border.color = 'black'
@@ -275,7 +275,7 @@ Rectangle
                         colorPicker.visible = false;
                         colorButton4.color = colorPicker.pickedColor;
                         colorButton4.colorUse4 = 1;
-                        LedGrid.colorSelect(parent.color)
+                        FotonGrid.colorSelect(parent.color)
                         LedBoardManager.sendLedColor(parent.color)
                     }
                 }
@@ -295,7 +295,7 @@ Rectangle
                 anchors.fill: parent
                 onClicked:
                 {
-                    LedGrid.colorSelect(parent.color)
+                    FotonGrid.colorSelect(parent.color)
                     LedBoardManager.sendLedColor(parent.color);
                     colorPicker.x = mainWindow.width*-1;
                     colorPicker.visible = false;
