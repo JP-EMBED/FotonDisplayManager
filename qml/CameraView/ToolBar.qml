@@ -106,6 +106,7 @@ Rectangle {
             onClicked: {
                 LEDImageGenerator.setPicture(previewImage.source,(cropBox.x - previewImage.x),
                                              (cropBox.y - previewImage.y));
+                LedBoardManager.sendLedColor(FotonGrid.getColor());
             }
         }
 

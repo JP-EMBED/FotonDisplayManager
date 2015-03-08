@@ -41,6 +41,7 @@ class Grid : public QObject
         //Gets/Sets
         QColor getLedColor(int index){return m_LEDColor[m_currentPage][index];}
         QColor getLedColor(int x, int y){return m_LEDColor[m_currentPage][x+y*32];}
+        void setLedColor(QColor color, int x, int y){m_LEDColor[m_currentPage][x+y*32] = color;}
 
         int getPages(){return m_lastPage;}
 

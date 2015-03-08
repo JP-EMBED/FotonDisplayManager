@@ -24,7 +24,7 @@ Rectangle {
         target: LEDImageGenerator
         onUpdatedLed:{
             LedBoardManager.sendLedColor(color_in);
-            FotonGrid.ledPressed(col_in, row_in);
+            FotonGrid.setLedColor(color_in,col_in, row_in);
             LedBoardManager.sendLedSet(col_in, row_in);
             boardView.ledBoard.itemAt(col_in + row_in*32).color = color_in
         }
