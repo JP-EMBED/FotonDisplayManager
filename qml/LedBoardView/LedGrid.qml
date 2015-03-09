@@ -66,7 +66,8 @@ Rectangle
             {
                 changeMade()
                 FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
-                displayGrid()
+                for (var i = 0; i < 1024; ++i)
+                    repeater.itemAt(i).color = FotonGrid.getLedColor(i);
 
             }
             else if (square.selectedTool == "BoxSelect")
@@ -160,7 +161,8 @@ Rectangle
                 {
                     changeMade()
                     FotonGrid.fillBucket(Math.floor(x), Math.floor(y), originX, originY, endX, endY)
-                    displayGrid()
+                    for (var i = 0; i < 1024; ++i)
+                        repeater.itemAt(i).color = FotonGrid.getLedColor(i);;
                 }
             }
         }
