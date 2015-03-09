@@ -27,5 +27,6 @@
         <file>qml/ledscreencomponent/images/led_on.png</file>
         <file>qml/TitleView/fonts/Rocker.ttf</file>
         <file>qml/TitleView/TitleButton.qml</file>
+        <file>qml/ColorPicker/images/Checkered.png</file>
     </qresource>
 </RCC>

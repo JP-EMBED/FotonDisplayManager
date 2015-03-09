@@ -232,7 +232,10 @@ Rectangle
             id: alphaPicker
             width: parent.width/18
             height: sbPicker.height
-            CheckerBoard{cellSide: 5}
+            Image{
+                anchors.fill: parent
+                source: "images/Checkered.png"
+            }
 
             //  alpha intensity gradient background
             Rectangle

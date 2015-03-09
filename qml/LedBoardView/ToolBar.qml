@@ -39,7 +39,16 @@ Rectangle
             radius: width*.1
             border.width: 10
             border.color: "#14DADE"
-            Text{ text: "Pen"}
+            Text
+            {
+                anchors.fill: parent
+                text: "Pen"
+                font.pixelSize: height/2;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -62,7 +71,16 @@ Rectangle
             border.width: 10
             border.color: "black"
             property int altUse: 0
-            Text{ text: "Fill"}
+            Text
+            {
+                anchors.fill: parent
+                text: "Fill"
+                font.pixelSize: height/2;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -95,7 +113,16 @@ Rectangle
             radius: width*.1
             border.width: 10
             border.color: 'black'
-            Text{ text: "BoxSelect"}
+            Text
+            {
+                anchors.fill: parent
+                text: "BoxSelect"
+                font.pixelSize: height/4;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -118,7 +145,16 @@ Rectangle
             radius: width*.1
             border.width: 10
             border.color: 'black'
-            Text{ text: "Move"}
+            Text
+            {
+                anchors.fill: parent
+                text: "Move"
+                font.pixelSize: height/2;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -143,7 +179,16 @@ Rectangle
             border.width: 10
             border.color: 'black'
 
-            Text{ text: "Save"}
+            Text
+            {
+                anchors.fill: parent
+                text: "Save"
+                font.pixelSize: height/2;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -163,7 +208,16 @@ Rectangle
             border.width: 10
             border.color: 'black'
 
-            Text{ text: "open"}
+            Text
+            {
+                anchors.fill: parent
+                text: "Open"
+                font.pixelSize: height/2;
+                font.bold: true
+                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
+                anchors.bottomMargin: 3
+
+            }
             MouseArea
             {
                 anchors.fill:parent
@@ -198,47 +252,6 @@ Rectangle
                 }
             }
          }
-         /*
-         Rectangle{height: animationBar.height/20; width: animationBar.width; color: "transparent"}
-         Rectangle
-         {
-            id: connect
-            height: animationBar.height/10
-            width: animationBar.width
-            radius: width*.1
-            border.width: 10
-            border.color: 'black'
-
-            Text{ text: "Connect"}
-            MouseArea
-            {
-                anchors.fill:parent
-                onClicked:
-                {
-                    //bluetooth connection
-                }
-            }
-         }
-         Rectangle
-         {
-            id: send
-            height: animationBar.height/10
-            width: animationBar.width
-            radius: width*.1
-            border.width: 10
-            border.color: 'black'
-
-            Text{ text: "Send"}
-            MouseArea
-            {
-                anchors.fill:parent
-                onClicked:
-                {
-                    //send bluetooth data
-                }
-            }
-         }
-         */
     }
 }
 
