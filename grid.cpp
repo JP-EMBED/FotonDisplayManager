@@ -235,6 +235,7 @@ void Grid::fillBucket(int x, int y, int startX, int startY, int endX, int endY)
         fillBucket(x, y, m_LEDColor[m_currentPage][x+y*32], (startX < endX)? startX:endX,(startY < endY)? startY:endY, (startX > endX)? startX-1:endX -1, (startY > endY)? startY-1:endY-1);
 }
 
+
 void Grid::fillBucket(int x, int y, QColor color, const int & startX,const int & startY, const int & endX, const int & endY)
 {
     m_LEDColor[m_currentPage][x+y*32] = m_color;
@@ -251,4 +252,29 @@ void Grid::fillBucket(int x, int y, QColor color, const int & startX,const int &
         fillBucket(x-1, y, color, startX, startY, endX, endY);
 }
 
+void Grid::fillBucketInverseSelect(int x, int y, QRect select_rect, int startX, int startY, int endX, int endY)
+{
+    if(m_LEDColor[m_currentPage][x+y*32] != m_color)
+        fillBucketInverseSelect(x, y, m_LEDColor[m_currentPage][x+y*32],
+                (startX < endX)? startX:endX,(startY < endY)? startY:endY,
+                (startX > endX)? startX-1:endX -1, (startY > endY)? startY-1:endY-1,select_rect);
+}
 
+void Grid::fillBucketInverseSelect(int x, int y, QColor color, const int & startX,const int & startY, const int & endX, const int & endY,QRect & select_rect)
+{
+    if(!select_rect.contains(x,y))
+    {
+        m_LEDColor[m_currentPage][x+y*32] = m_color;
+        m_brdManager->sendLedSet(x,y);
+
+        //qDebug() << QString::number(x)<< QString::number(y);
+        if ( y < endY && y < 31 && m_LEDColor[m_currentPage][x+(y+1)*32] == color)
+            fillBucketInverseSelect(x, y+1, color, startX, startY, endX, endY,select_rect);
+        if ( x < endX && x < 31 && m_LEDColor[m_currentPage][(x+1)+y*32] == color)
+            fillBucketInverseSelect(x+1, y, color, startX, startY, endX, endY,select_rect);
+        if ( y > startY && y > 0 && m_LEDColor[m_currentPage][x+(y-1)*32] == color)
+            fillBucketInverseSelect(x, y-1, color, startX, startY, endX, endY,select_rect);
+        if ( x > startX && x > 0 && m_LEDColor[m_currentPage][(x-1)+y*32] == color)
+            fillBucketInverseSelect(x-1, y, color, startX, startY, endX, endY,select_rect);
+    }
+}

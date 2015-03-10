@@ -4,11 +4,16 @@ import QtQuick.Controls 1.2
 Rectangle
 {
     property alias fillTool: fillTool
+    property alias selectTool: selectTool
+
     id: toolBar
     width: parent.width/11
     height: parent.height - topBar.height
     x: 0
     y: topBar.height
+    signal selectToolEnabled()
+    signal selectToolDisabled()
+    signal toolSelected()
 
     //horizontal gradient
     Rectangle
@@ -45,26 +50,18 @@ Rectangle
                 anchors.fill: parent
                 anchors.margins: 6
             }
-            /*Text
-            {
-                anchors.fill: parent
-                text: "Pen"
-                font.pixelSize: height/2;
-                font.bold: true
-                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
-                anchors.bottomMargin: 3
 
-            }*/
             MouseArea
             {
                 anchors.fill:parent
-                onClicked:
+                onClicked: // on clicked pen
                 {
                     square.selectedTool = "Pen"
+                    toolBar.toolSelected();
                     penTool.border.color = "#14DADE"
                     fillTool.border.color = 'black'
-                    selectTool.border.color = 'black'
                     moveTool.border.color = 'black'
+
                 }
             }
          }
@@ -83,37 +80,17 @@ Rectangle
                 anchors.fill: parent
                 anchors.margins: 6
             }
-            /*Text
-            {
-                anchors.fill: parent
-                text: "Fill"
-                font.pixelSize: height/2;
-                font.bold: true
-                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
-                anchors.bottomMargin: 3
 
-            }*/
             MouseArea
             {
                 anchors.fill:parent
-                onClicked:
+                onClicked: // On clicked Fill
                 {
-                    if (square.selectedTool == "BoxSelect" && fillTool.altUse == 0)
-                    {
-                        fillTool.altUse = 1
-                        fillTool.border.color = "#14DADE"
-                        selectTool.border.color = "#00CACF"
-                    }
-                    else
-                    {
-                        fillTool.altUse = 0
-                        square.selectedTool = "Fill"
-
-                        penTool.border.color = 'black'
-                        fillTool.border.color = "#14DADE"
-                        selectTool.border.color = 'black'
-                        moveTool.border.color = 'black'
-                    }
+                    square.selectedTool = "Fill"
+                    penTool.border.color = 'black'
+                    fillTool.border.color = "#14DADE"
+                    toolBar.toolSelected();
+                    moveTool.border.color = 'black'
                 }
             }
          }
@@ -124,6 +101,7 @@ Rectangle
             width: animationBar.width
             radius: width*.1
             border.width: 6
+            property bool selected: false
             border.color: 'black'
             Image
             {
@@ -131,27 +109,24 @@ Rectangle
                 anchors.fill: parent
                 anchors.margins: 6
             }
-            /*Text
-            {
-                anchors.fill: parent
-                text: "BoxSelect"
-                font.pixelSize: height/4;
-                font.bold: true
-                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
-                anchors.bottomMargin: 3
 
-            }*/
             MouseArea
             {
                 anchors.fill:parent
                 onClicked:
                 {
-                    square.selectedTool = "BoxSelect"
-                    fillTool.altUse = 0
-                    penTool.border.color = 'black'
-                    fillTool.border.color = "#FFB01C"
-                    selectTool.border.color = "#14DADE"
-                    moveTool.border.color = 'black'
+                    if(selectTool.selected)
+                    {
+                        selectTool.border.color = "black"
+                        toolBar.selectToolDisabled()
+                        selectTool.selected = false
+                    }
+                    else
+                    {
+                        selectTool.border.color = "#14DADE"
+                        toolBar.selectToolEnabled()
+                        selectTool.selected = true
+                    }
                 }
             }
          }
@@ -169,16 +144,7 @@ Rectangle
                 anchors.fill: parent
                 anchors.margins: 6
             }
-            /*Text
-            {
-                anchors.fill: parent
-                text: "Move"
-                font.pixelSize: height/2;
-                font.bold: true
-                horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
-                anchors.bottomMargin: 3
 
-            }*/
             MouseArea
             {
                 anchors.fill:parent
@@ -188,8 +154,8 @@ Rectangle
 
                     penTool.border.color = 'black'
                     fillTool.border.color = 'black'
-                    selectTool.border.color = 'black'
                     moveTool.border.color = "#14DADE"
+                    toolBar.toolSelected();
                 }
             }
          }
@@ -274,6 +240,7 @@ Rectangle
                 anchors.fill:parent
                 onClicked:
                 {
+                    toolBar.toolSelected();
                     camView.showCameraView();
                 }
             }

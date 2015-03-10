@@ -13,6 +13,7 @@ Rectangle
     visible: true
     color: "black"
 
+
     Timer
     {
         id: animationTimer
@@ -26,13 +27,35 @@ Rectangle
         }
     }
 
-    LedGrid{id:square}
+    LedGrid{id:square;}
     ColorPalette{id:topBar;}
-    ToolBar{id:toolBar}
+    ToolBar{
+        id:toolBar
+        onSelectToolDisabled:{
+            square.selectionBox.placed = 0
+            square.selectionMode = false
+            square.selectionBox.width = 0;
+            square.selectionBox.height = 0;
+        }
+        onSelectToolEnabled:{
+            square.selectionBox.placed = 0
+            square.selectionMode = true
+        }
+        onToolSelected:{
+            if(square.selectionMode && !square.selectionBox.placed)
+            {
+                selectTool.border.color = "black"
+                selectTool.selected = false
+                square.selectionMode = false
+            }
+            square.selectionBox.dragArea.enabled = (square.selectedTool == "Move")
+
+        }
+    }
     AnimationBar{id:animationBar}
 
 
-    ColorPicker{id:colorPicker; width:parent.width*4/8; height: parent.height*4/8; y:topBar.height+4; x:parent.width*-1; visible: false}
+    ColorPicker{id:colorPicker; width:parent.width* .5; height: parent.height* .5; y:topBar.height+4; x:parent.width*-1; visible: false}
     FExplorer{id:fExplorer; x: parent.width*-1}
 
     function displayGrid()

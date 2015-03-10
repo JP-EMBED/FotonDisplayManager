@@ -7,26 +7,24 @@ Rectangle {
     property bool viewFinderMode: true
     function showCameraView(){
         openCameraView.start();
-        frontCamera.cameraState = Camera.ActiveState;
         camView.visible = true;
-
     }
     function hideCameraView(){
         closeCameraView.start();
-        frontCamera.cameraState = Camera.UnloadedState
+
         viewFinder.visible = true;
         previewImage.visible = false
         cropBox.visible = false
         viewFinderMode = true
-
     }
     Connections{
         target: LEDImageGenerator
         onUpdatedLed:{
-            LedBoardManager.sendLedColor(color_in);
-            FotonGrid.setLedColor(color_in,col_in, row_in);
-            LedBoardManager.sendLedSet(col_in, row_in);
-            boardView.ledBoard.itemAt(col_in + row_in*32).color = color_in
+           LedBoardManager.sendLedColor(color_in);
+           FotonGrid.setLedColor(color_in,col_in, row_in);
+           boardView.ledBoard.itemAt(col_in + row_in*32).color = color_in
+           LedBoardManager.sendLedSet(col_in, row_in);
+
         }
         onFinishedGeneratingImage:
         {
@@ -134,7 +132,9 @@ Rectangle {
         to: 0
         running: false
         alwaysRunToEnd: true
+
         onStopped: {
+            frontCamera.cameraState = Camera.ActiveState;
         }
 
     }
@@ -147,6 +147,7 @@ Rectangle {
         running: false
         onStopped: {
             camView.visible = !camView.visible;
+            frontCamera.cameraState = Camera.UnloadedState
         }
 
     }

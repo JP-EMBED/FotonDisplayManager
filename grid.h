@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QColor>
 #include "ledboardmanager.h"
-
+#include <QRect>
 class Grid : public QObject
 {
     Q_OBJECT
@@ -16,6 +16,7 @@ class Grid : public QObject
         ~Grid();
 
         void fillBucket(int x, int y, QColor color, const int & startX, const int & startY, const int & endX, const int & endY);
+        void fillBucketInverseSelect(int x, int y, QColor color, const int & startX, const int & startY, const int & endX, const int & endY, QRect &select_rect);
         void DeletePage();
     signals:
 
@@ -30,6 +31,8 @@ class Grid : public QObject
 
         void ledPressed(int x, int y);
         void fillBucket(int x, int y,  int startX = 0, int startY = 0, int endX = 32, int endY = 32);
+        void fillBucketInverseSelect(int x, int y,QRect select_rect,  int startX = 0, int startY = 0, int endX = 32, int endY = 32);
+
         QColor getColor(){return m_color;}
 
         //Copy/Paste functions
