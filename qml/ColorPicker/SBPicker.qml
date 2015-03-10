@@ -33,7 +33,7 @@ Item
     Item
     {
         id: pickerCursor
-        property int r : 20
+        property int r : 10
         Rectangle
         {
             x: -parent.r; y: -parent.r

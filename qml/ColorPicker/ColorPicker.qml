@@ -192,6 +192,7 @@ Rectangle
             height: parent.height
             width: parent.height
             hueColor: hsba(hueSlider.value, 1.0, 1.0, 1.0)
+            cursorx: width
         }
 
         Rectangle

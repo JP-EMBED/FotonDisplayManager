@@ -37,9 +37,15 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: "#14DADE"
-            Text
+            Image
+            {
+                source: "images/pen.png"
+                anchors.fill: parent
+                anchors.margins: 6
+            }
+            /*Text
             {
                 anchors.fill: parent
                 text: "Pen"
@@ -48,7 +54,7 @@ Rectangle
                 horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
                 anchors.bottomMargin: 3
 
-            }
+            }*/
             MouseArea
             {
                 anchors.fill:parent
@@ -68,10 +74,16 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: "black"
             property int altUse: 0
-            Text
+            Image
+            {
+                source: "images/fillBucket.png"
+                anchors.fill: parent
+                anchors.margins: 6
+            }
+            /*Text
             {
                 anchors.fill: parent
                 text: "Fill"
@@ -80,7 +92,7 @@ Rectangle
                 horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
                 anchors.bottomMargin: 3
 
-            }
+            }*/
             MouseArea
             {
                 anchors.fill:parent
@@ -111,9 +123,15 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: 'black'
-            Text
+            Image
+            {
+                source: "images/selectionBox.png"
+                anchors.fill: parent
+                anchors.margins: 6
+            }
+            /*Text
             {
                 anchors.fill: parent
                 text: "BoxSelect"
@@ -122,7 +140,7 @@ Rectangle
                 horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
                 anchors.bottomMargin: 3
 
-            }
+            }*/
             MouseArea
             {
                 anchors.fill:parent
@@ -143,9 +161,15 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: 'black'
-            Text
+            Image
+            {
+                source: "images/move.png"
+                anchors.fill: parent
+                anchors.margins: 6
+            }
+            /*Text
             {
                 anchors.fill: parent
                 text: "Move"
@@ -154,7 +178,7 @@ Rectangle
                 horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter
                 anchors.bottomMargin: 3
 
-            }
+            }*/
             MouseArea
             {
                 anchors.fill:parent
@@ -176,9 +200,10 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: 'black'
-
+            enabled: false
+            visible: false
             Text
             {
                 anchors.fill: parent
@@ -205,9 +230,10 @@ Rectangle
             height: animationBar.height/10
             width: animationBar.width
             radius: width*.1
-            border.width: 10
+            border.width: 6
             border.color: 'black'
-
+            enabled: false
+            visible: false
             Text
             {
                 anchors.fill: parent

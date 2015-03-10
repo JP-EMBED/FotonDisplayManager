@@ -60,7 +60,8 @@ DISTFILES += \
     qml/CameraView/ToolBar.qml \
     qml/TitleView/TitleView.qml \
     qml/ledscreencomponent/LedScreen.qml \
-    qml/TitleView/TitleButton.qml
+    qml/TitleView/TitleButton.qml \
+    qml/LedBoardView/images/pen.png
 
 HEADERS += \
     connectionmanager.h \

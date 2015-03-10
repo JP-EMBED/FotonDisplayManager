@@ -161,7 +161,9 @@ void Grid::pastePage(int type, int originX, int originY, int endX, int endY)
             {
                 if (0 <= startY)
                 {
-                    m_LEDColor[m_currentPage][startX+(startY++)*32] = page[(m_copyStartX[type]+i)+(m_copyStartY[type]+j)*32];
+                    m_LEDColor[m_currentPage][startX+(startY)*32] = page[(m_copyStartX[type]+i)+(m_copyStartY[type]+j)*32];
+                    m_brdManager->sendLedColor(m_LEDColor[m_currentPage][startX+(startY)*32]);
+                    m_brdManager->sendLedSet(startX, startY++);
                 }
             }
         }

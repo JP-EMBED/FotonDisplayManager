@@ -31,44 +31,100 @@ Rectangle
          spacing: 0
 
         //spacer
-         Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
+         Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
 
-         Button
+         Rectangle
          {
             id: clearButton
-            height: animationBar.height/20
+            height: animationBar.height/13
             width: animationBar.width
-            text: "Clear"
-            onClicked:
+            radius: width*.1
+            clip: true
+            Image
             {
-                FotonGrid.clearBoard()
-                LedBoardManager.sendClearBoard();
-                for(var i = 0; i < 1024;i++)
-                    square.grid.itemAt(i).color = 'black'
-                LedBoardManager.sendLedColor(FotonGrid.getColor());
+                id: clearImage
+                source: "images/spongeButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: clearArea.pressed
+            }
+            MouseArea
+            {
+                id:clearArea
+                anchors.fill: parent
+                onClicked:
+                {
+                    FotonGrid.clearBoard()
+                    LedBoardManager.sendClearBoard();
+                    for(var i = 0; i < 1024;i++)
+                        square.grid.itemAt(i).color = 'black'
+                    LedBoardManager.sendLedColor(FotonGrid.getColor());
+                }
             }
          }
         //spacer
-         Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
-         Button
+         Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
+         Rectangle
          {
             id: nextButton
-            height: animationBar.height/20; width: animationBar.width
-            text: "Next"
-            onClicked:{flipPage(1);}
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
+            clip: true
+            Image
+            {
+                source: "images/nextButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: nextArea.pressed
+            }
+            MouseArea
+            {
+                id:nextArea
+                anchors.fill: parent;
+                onClicked:{flipPage(1);}
+            }
          }
-         Button
+
+         Rectangle
          {
             id: prevButton
-            height: animationBar.height/20; width: animationBar.width
-            text: "Prev"
-            onClicked:{flipPage(0)}
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
+            clip: true
+            Image
+            {
+                source: "images/previousButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: prevArea.pressed
+            }
+            MouseArea
+            {
+                id: prevArea
+                anchors.fill: parent;
+                onClicked:{flipPage(0)}
+            }
          }
         //spacer
-        Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
+        Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
         Rectangle
         {
-            height: parent.height/10
+            height: parent.height/13
             width:  parent.width
             TextInput
             {
@@ -93,111 +149,214 @@ Rectangle
 
             }
         }
-        Button
+        Rectangle
         {
             id: playButton
-            height: animationBar.height/20; width: animationBar.width
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
             property int play: 0;
-            text: ">"
-            onClicked:
+            clip: true
+            Image
             {
-                if (play == 0)
+                source: parent.play ? "images/pauseButton.png": "images/playButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: playArea.pressed
+            }
+            MouseArea
+            {
+                id: playArea
+                anchors.fill: parent;
+                onClicked:
                 {
-                    playButton.play = 1;
-                    playButton.text = "II";
-                    animationTimer.restart();
-
-                }
-                else
-                {
-                    playButton.play = 0;
-                    playButton.text = ">";
-                    animationTimer.stop();
+                    if (playButton.play == 0)
+                    {
+                        playButton.play = 1;
+                        animationTimer.restart();
+                    }
+                    else
+                    {
+                        playButton.play = 0;
+                        animationTimer.stop();
+                    }
                 }
             }
         }
 
         //spacer
-        Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
-        Button
+        Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
+        Rectangle
         {
-            height: animationBar.height/20
+            height: animationBar.height/13
             width: animationBar.width
-            text: "Copy"
-            onClicked:
+            radius: width*.1
+            clip: true
+            Image
             {
-                if (square.selectedTool == "BoxSelect")
-                {
-                   FotonGrid.copyPage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
-                }
-                else
-                {
-                    FotonGrid.copyPage()
-                }
+                source: "images/copyButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
             }
-        }
-        Button
-        {
-            height: animationBar.height/20
-            width: animationBar.width
-            text: "Paste"
-            onClicked:
+            Rectangle
             {
-                if(FotonGrid.getCopyFlag() > 0)
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: copyArea.pressed
+            }
+            MouseArea
+            {
+                id: copyArea
+                anchors.fill: parent;
+                onClicked:
                 {
-                    changeMade()
                     if (square.selectedTool == "BoxSelect")
-                        FotonGrid.pastePage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
+                    {
+                       FotonGrid.copyPage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
+                    }
                     else
-                        FotonGrid.pastePage()
-                    displayGrid()
+                    {
+                        FotonGrid.copyPage()
+                    }
                 }
+            }
+        }
+        Rectangle
+        {
+            height: animationBar.height/13
+            width: animationBar.width
+            radius: width*.1
+            clip: true
+            Image
+            {
+                source: "images/pasteButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: pasteArea.pressed
+            }
+            MouseArea
+            {
+                id: pasteArea
+                anchors.fill: parent;
+                onClicked:
+                {
+                    if(FotonGrid.getCopyFlag() > 0)
+                    {
+                        changeMade()
+                        if (square.selectedTool == "BoxSelect")
+                            FotonGrid.pastePage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
+                        else
+                            FotonGrid.pastePage()
+                        for(var i = 0; i < 1024;i++)
+                            square.grid.itemAt(i).color = FotonGrid.getLedColor(i);
+                    }
 
+                }
             }
         }
 
-        Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
-        Button
+        Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
+        Rectangle
         {
             id: addButton
-            height: animationBar.height/15; width: animationBar.width
-            text: "Add"
-            onClicked:
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
+            clip: true
+            Image
             {
-                FotonGrid.insertPage()
-
-                changeMade()
-                displayGrid()
-                inputBox.text = FotonGrid.getDuration()/1000
+                source: "images/addButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: addArea.pressed
+            }
+            MouseArea
+            {
+                id: addArea
+                anchors.fill: parent;
+                onClicked:
+                {
+                    FotonGrid.insertPage()
+                    changeMade()
+                    displayGrid()
+                    inputBox.text = FotonGrid.getDuration()/1000
+                }
             }
         }
-        Button
+        Rectangle
         {
-
             id: deleteButton
-            height: animationBar.height/15; width: animationBar.width
-            text: "Delete"
-            onClicked:
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
+            clip: true
+            Image
             {
-                FotonGrid.deletePage()
-
-                displayGrid()
-                inputBox.text = FotonGrid.getDuration()/1000
+                source: "images/deleteButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: deleteArea.pressed
+            }
+            MouseArea
+            {
+                id: deleteArea
+                anchors.fill: parent;
+                onClicked:
+                {
+                    FotonGrid.deletePage()
+                    displayGrid()
+                    inputBox.text = FotonGrid.getDuration()/1000
+                }
             }
         }
-        Rectangle{height: animationBar.height/15; width: animationBar.width; color: "transparent"}
-        Button
+        Rectangle{height: animationBar.height/26; width: animationBar.width; color: "transparent"}
+        Rectangle
         {
 
             id: undoButton
-            height: animationBar.height/15; width: animationBar.width
+            height: animationBar.height/13; width: animationBar.width
+            radius: width*.1
             property int redo: 0
-            text: redo ? "Redo":"Undo"
-            onClicked:
+            clip: true
+            Image
             {
-                FotonGrid.undoPage();
-                displayGrid();
-                undoButton.redo = undoButton.redo ^ 1;
+                source: parent.redo ? "images/redoButton.png" : "images/undoButton.png"
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+            Rectangle
+            {
+                anchors.fill: parent
+                color: "#7FA3A3A3"
+                visible: undoArea.pressed
+            }
+            MouseArea
+            {
+                id: undoArea
+                anchors.fill: parent;
+                onClicked:
+                {
+                    FotonGrid.undoPage();
+                    displayGrid();
+                    undoButton.redo = undoButton.redo ^ 1;
+                }
             }
         }
     }

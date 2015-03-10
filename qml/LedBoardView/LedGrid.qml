@@ -41,6 +41,8 @@ Rectangle
         maximumTouchPoints: 2
         enabled: !colorPicker.visible
         touchPoints: [TouchPoint { id: point1 }, TouchPoint { id: point2 }]
+        property real moveStartX: 0
+        property real moveStartY: 0
         onPressed:
         {
             var x = point1.x/(square.width/32)
@@ -86,7 +88,8 @@ Rectangle
                         FotonGrid.copyPage(2, originX, originY, endX, endY)
                         FotonGrid.fillBucket( Math.floor(x), Math.floor(y) )
                         FotonGrid.pastePage(2, originX, originY, endX, endY)
-                        displayGrid()
+                        for(var i = 0; i < 1024;i++)
+                            square.grid.itemAt(i).color = FotonGrid.getLedColor(i);
                     }
                     else
                     {
@@ -106,7 +109,8 @@ Rectangle
                         FotonGrid.copyPage(2, originX, originY, endX, endY)
                         FotonGrid.fillBucket( Math.floor(x), Math.floor(y))
                         FotonGrid.pastePage(2, originX, originY, endX, endY)
-                        displayGrid()
+                        for(var i = 0; i < 1024;i++)
+                            square.grid.itemAt(i).color = FotonGrid.getLedColor(i);
                     }
                     else
                     {
@@ -126,7 +130,8 @@ Rectangle
                         FotonGrid.copyPage(2,originX, originY, endX, endY)
                         FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
                         FotonGrid.pastePage(2,originX, originY, endX, endY)
-                        displayGrid()
+                        for(var i = 0; i < 1024;i++)
+                            square.grid.itemAt(i).color = FotonGrid.getLedColor(i);
                     }
                     else
                     {
@@ -146,7 +151,8 @@ Rectangle
                         FotonGrid.copyPage(2, originX, originY, endX, endY)
                         FotonGrid.fillBucket(Math.floor(x), Math.floor(y))
                         FotonGrid.pastePage(2, originX, originY, endX, endY)
-                        displayGrid()
+                        for(var i = 0; i < 1024;i++)
+                            square.grid.itemAt(i).color = FotonGrid.getLedColor(i);
                     }
                     else
                     {
@@ -164,6 +170,11 @@ Rectangle
                     for (var i = 0; i < 1024; ++i)
                         repeater.itemAt(i).color = FotonGrid.getLedColor(i);;
                 }
+            }
+            else if (square.selectedTool == "Move")
+            {
+                squareMultiTouch.moveStartX = point1.x;
+                squareMultiTouch.moveStartY = point1.y;
             }
         }
         onUpdated:
@@ -199,8 +210,8 @@ Rectangle
                         }
                         else if (point1.pressed)
                         {
-                            square.x = square.currentX + (point1.x - point1.startX);
-                            square.y = square.currentY + (point1.y - point1.startY);
+                            square.x = square.currentX + (point1.x - squareMultiTouch.moveStartX);
+                            square.y = square.currentY + (point1.y - squareMultiTouch.moveStartY);
                         }
                     }
             }
