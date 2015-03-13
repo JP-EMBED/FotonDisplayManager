@@ -168,8 +168,6 @@ Rectangle
             radius: width*.1
             border.width: 6
             border.color: 'black'
-            enabled: false
-            visible: false
             Text
             {
                 anchors.fill: parent
@@ -198,8 +196,6 @@ Rectangle
             radius: width*.1
             border.width: 6
             border.color: 'black'
-            enabled: false
-            visible: false
             Text
             {
                 anchors.fill: parent

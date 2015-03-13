@@ -214,7 +214,7 @@ Rectangle
                 anchors.fill: parent;
                 onClicked:
                 {
-                    if (square.selectedTool == "BoxSelect")
+                    if (square.selectionBox.placed)
                     {
                        FotonGrid.copyPage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
                     }
@@ -252,7 +252,7 @@ Rectangle
                     if(FotonGrid.getCopyFlag() > 0)
                     {
                         changeMade()
-                        if (square.selectedTool == "BoxSelect")
+                        if (square.selectionBox.placed)
                             FotonGrid.pastePage(0,Math.round(square.selectionBox.originX/(square.width/32)), Math.round(square.selectionBox.originY/(square.width/32)), Math.round(square.selectionBox.endX/(square.width/32)), Math.round(square.selectionBox.endY/(square.width/32)))
                         else
                             FotonGrid.pastePage()

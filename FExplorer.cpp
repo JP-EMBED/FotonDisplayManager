@@ -25,8 +25,8 @@ FExplorer::FExplorer(Grid* grid)
     }
     else
         file.open(QIODevice::ReadOnly);
-    file.close();*/
-
+    file.close();
+    */
     m_list = m_directory.entryList(QDir::AllEntries | QDir::NoDot);
 }
 
@@ -77,10 +77,7 @@ bool FExplorer::processFile(QString name)
     if (name != "")
     {
         if (!cd(name))
-        {
-
             ret = true;
-        }
     }
 
     return ret;
@@ -90,13 +87,11 @@ void FExplorer::saveLeds(QString name, Grid* grid)
 {
     QFile file(m_directory.absolutePath()+"/"+name);
     QByteArray ra;
-    ra += name;
 
     m_file = name;
 
     file.open(QIODevice::WriteOnly);
 
-    ra.append('\0');
     toQByteArray(ra, grid->m_lastPage);
 
 
@@ -122,30 +117,16 @@ void FExplorer::saveLeds(QString name, Grid* grid)
     file.close();
 
     m_list = m_directory.entryList(QDir::AllEntries | QDir::NoDot);
-
-
-    QFile file2(m_directory.absolutePath()+"/Foton.conf");
-
-    file2.open(QIODevice::WriteOnly);
-
-    ra.clear();
-    ra += name;
-    file2.write(ra);
-    file2.close();
 }
 
 
 void FExplorer::openLeds(QString name, Grid* grid)
 {
     QFile file(m_directory.absolutePath()+"/"+name);
-    char buffer = 'A';
+    char buffer[4];
     QByteArray ra;
     QString stringID;
     int lastpage = 0;
-
-    for (int i = grid->m_lastPage; i > 0; i--)
-        grid->deletePage();
-
 
 
     if(file.exists())
@@ -153,34 +134,28 @@ void FExplorer::openLeds(QString name, Grid* grid)
         if(file.open(QIODevice::ReadOnly))
         {
 
-            while(buffer != '\0')
-            {
-                file.getChar(&buffer);
-                stringID = stringID+buffer;
-            }
-
-            qDebug() << stringID;
-
-            m_file = stringID;
+            for (int i = grid->m_lastPage; i > 0; i--)
+                grid->deletePage();
 
             for (int i = 0; i < sizeof(int); i++)
             {
-                file.getChar(&buffer);
+                file.getChar(buffer);
                 lastpage = lastpage << 8;
-                lastpage += buffer;
+                lastpage += (unsigned char)buffer[0];
             }
 
 
-            qDebug() << lastpage;
-            ra = file.read(4096*lastpage);
 
+
+            qDebug () << lastpage;
             for (int i = 0; i < lastpage; i++)
             {
                 for (int j = 0; j < 1024; j++)
                 {
-                    grid->m_LEDColor[i][j] = QColor(ra[j*4+i*4096], ra[j*4+1+i*4096], ra[j*4+2+i*4096], ra[j*4+3+i*4096]);
+                    for (int x = 0; x < 4; x++)
+                        file.getChar(&(buffer[x]));
+                    grid->m_LEDColor[i][j] = QColor((unsigned char)buffer[0], (unsigned char)buffer[1], (unsigned char)buffer[2], (unsigned char)buffer[3]);
                 }
-                //qDebug() << "found it?";
                 grid->insertPage();
             }
             grid->deletePage();
@@ -190,9 +165,9 @@ void FExplorer::openLeds(QString name, Grid* grid)
                 grid->m_duration[i] = 0;
                 for (int j = 0; j < sizeof(int); j++)
                 {
-                    file.getChar(&buffer);
+                    file.getChar(buffer);
                     grid->m_duration[i] = grid->m_duration[i] << 8;
-                    grid->m_duration[i] += buffer;
+                    grid->m_duration[i] = grid->m_duration[i] + (unsigned char)buffer[0];
                 }
             }
             qDebug() << grid->m_duration[0];
