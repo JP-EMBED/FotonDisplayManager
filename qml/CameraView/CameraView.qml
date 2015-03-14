@@ -5,6 +5,7 @@ Rectangle {
     id:camView
     visible:false
     property bool viewFinderMode: true
+    property string currentDevice: ""
     function showCameraView(){
         openCameraView.start();
         camView.visible = true;
@@ -16,6 +17,15 @@ Rectangle {
         previewImage.visible = false
         cropBox.visible = false
         viewFinderMode = true
+    }
+    Connections{
+        target:titleBar
+        onSwitchToBack:{
+            camera.position = Camera.BackFace;
+        }
+        onSwitchToFront:{
+            camera.position = Camera.FrontFace;
+        }
     }
     Connections{
         target: LEDImageGenerator
@@ -34,6 +44,7 @@ Rectangle {
 
     TitleBar{
         id: titleBar
+        backCamAvailable: (QtMultimedia.availableCameras.length > 1)
         width: parent.width
         height: parent.height/10
         anchors.top: parent.top
@@ -41,6 +52,7 @@ Rectangle {
 
     Camera{
         id:camera
+        deviceId:currentDevice
         cameraState: Camera.UnloadedState
         captureMode:Camera.CaptureViewfinder
         position:Camera.FrontFace
@@ -53,6 +65,7 @@ Rectangle {
                 cropBox.visible = true
             }
         }
+
     }
     Image{
         id:previewImage
@@ -150,6 +163,19 @@ Rectangle {
             camera.cameraState = Camera.UnloadedState
         }
 
+    }
+    Component.onCompleted: {
+       if(QtMultimedia.availableCameras.length >= 1)
+       {
+           for(var i = 0; i < QtMultimedia.availableCameras.length; i++)
+           {
+                if(QtMultimedia.availableCameras[i].position == Camera.FrontFace)
+                {
+                    camView.currentDevice = QtMultimedia.availableCameras[i].deviceId;
+                    break;
+                }
+           }
+       }
     }
 }
 

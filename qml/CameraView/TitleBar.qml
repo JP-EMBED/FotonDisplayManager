@@ -5,6 +5,8 @@ import QtQuick.Controls.Styles 1.2
 Rectangle {
 
     property bool backCamAvailable : false
+    signal switchToBack()
+    signal switchToFront()
     gradient: Gradient {
         GradientStop {
             position: 0.00;
@@ -61,6 +63,16 @@ Rectangle {
                     anchors.fill: parent
                     source: "images/swap-camera.png"
                 }
+            }
+        }
+        onCheckedChanged: {
+            if(checked)
+            {
+                switchToBack()
+            }
+            else
+            {
+                switchToFront()
             }
         }
     }

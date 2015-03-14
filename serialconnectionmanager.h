@@ -1,7 +1,7 @@
 #ifndef SERIALCONNECTIONMANAGER_H
 #define SERIALCONNECTIONMANAGER_H
 
-#define NOT_ANDROID_OS
+//#define NOT_ANDROID_OS
 #include "iConnection.h"
 #ifdef NOT_ANDROID_OS
 #include <QSerialPort>
