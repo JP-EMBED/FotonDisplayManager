@@ -4,7 +4,6 @@
 #include "ledboardmanager.h"
 #include <QQmlContext>
 #include <QScreen>
-//#include "serialconnectionmanager.h"
 #include "Foton.h"
 #include <QFont>
 #include "ledimagegenerator.h"

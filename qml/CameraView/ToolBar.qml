@@ -66,7 +66,7 @@ Rectangle {
             onClicked: {
                 if(viewFinderMode)
                 {
-                    frontCamera.imageCapture.capture();
+                    camera.imageCapture.capture();
                     previewImage.z = viewFinder.z+1;
                     viewFinder.visible = false;
                     cropBox.visible = true

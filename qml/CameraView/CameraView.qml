@@ -40,7 +40,7 @@ Rectangle {
     }
 
     Camera{
-        id:frontCamera
+        id:camera
         cameraState: Camera.UnloadedState
         captureMode:Camera.CaptureViewfinder
         position:Camera.FrontFace
@@ -57,15 +57,15 @@ Rectangle {
     Image{
         id:previewImage
         anchors.centerIn: parent
-        width:1280
-        height:720
-        sourceSize.width:1280
-        sourceSize.height:720
+        width:capturer.resolution.width
+        height:capturer.resolution.height
+        sourceSize.width:capturer.resolution.width
+        sourceSize.height:capturer.resolution.height
     }
 
     VideoOutput{
         id:viewFinder
-        source: frontCamera
+        source: camera
         anchors.top: titleBar.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -83,7 +83,7 @@ Rectangle {
     {
         id: cropBox
         color: "transparent"
-        border.width: parent.width/200
+        border.width: parent.width/240
         border.color: 'white'
         visible: false
         transformOrigin: Item.Center
@@ -134,7 +134,7 @@ Rectangle {
         alwaysRunToEnd: true
 
         onStopped: {
-            frontCamera.cameraState = Camera.ActiveState;
+            camera.cameraState = Camera.ActiveState;
         }
 
     }
@@ -147,7 +147,7 @@ Rectangle {
         running: false
         onStopped: {
             camView.visible = !camView.visible;
-            frontCamera.cameraState = Camera.UnloadedState
+            camera.cameraState = Camera.UnloadedState
         }
 
     }
