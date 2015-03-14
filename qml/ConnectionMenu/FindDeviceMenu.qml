@@ -29,7 +29,7 @@ Rectangle {
            console.log("Finished scanning");
         }
         onConnectedToLedBoard:{
-
+            busyThrobber.stop();
             busy.running = false;
             console.log("Connected to " + deviceID);
             LedBoardManager.sendLedColor(Qt.rgba(1,0,0,1))

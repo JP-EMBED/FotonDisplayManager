@@ -26,8 +26,10 @@ void LEDImageGenerator::setPicture(const QString &path, int x, int y)
 
     // if the image is not null begin cropping and scaling
     if( !image.isNull()) {
-        QImage cropped_data(320,320, QImage::Format_RGB888);
+        QImage cropped_data(320,320, image.format());
         cropped_data = image.copy(x,y,320,320);
+        QVector<QRgb> colorTable = cropped_data.colorTable();
+        QImage converted_image = cropped_data.convertToFormat(QImage::Format_RGB888,colorTable);
         QImage small_pmap = cropped_data.scaled(32,32);
         for(int row = 0; row < 32; row++)
         {

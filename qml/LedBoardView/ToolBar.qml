@@ -14,7 +14,7 @@ Rectangle
     signal selectToolEnabled()
     signal selectToolDisabled()
     signal toolSelected()
-
+    signal testModeOpen()
     //horizontal gradient
     Rectangle
     {
@@ -239,6 +239,27 @@ Rectangle
                     toolBar.toolSelected();
                     camView.showCameraView();
                 }
+            }
+         }
+         Rectangle
+         {
+            id: testButton
+            height: open.height
+            width: open.width
+            radius: open.radius
+            border.width: 6
+            border.color: 'black'
+
+            Image{
+                anchors.fill: parent
+                anchors.margins: 8
+                source: "images/testButton.png"
+            }
+
+            MouseArea
+            {
+                anchors.fill:parent
+                onClicked:{testModeOpen()}
             }
          }
     }

@@ -45,5 +45,6 @@
         <file>qml/LedBoardView/images/spongeButton.png</file>
         <file>qml/LedBoardView/images/undoButton.png</file>
         <file>qml/CameraView/images/swap-camera.png</file>
+        <file>qml/LedBoardView/images/testButton.png</file>
     </qresource>
 </RCC>
