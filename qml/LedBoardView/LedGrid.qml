@@ -110,6 +110,10 @@ Rectangle
                     squareMultiTouch.moveStartX = point1.x;
                     squareMultiTouch.moveStartY = point1.y;
                 }
+                else if (square.selectedTool == "Eyedropper")
+                {
+                    topBar.changeColor(repeater.itemAt(col + row*32).color);
+                }
             }
         }
         onUpdated:

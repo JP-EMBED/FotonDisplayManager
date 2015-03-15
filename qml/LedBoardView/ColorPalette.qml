@@ -314,4 +314,32 @@ Rectangle
             }
         }
     }
+    function changeColor(color)
+    {
+        if (colorButton0.colorUse0 == 1)
+        {
+            colorButton0.color = color
+            FotonGrid.colorSelect(color)
+        }
+        else if (colorButton1.colorUse1 == 1)
+        {
+            colorButton1.color = color
+            FotonGrid.colorSelect(color)
+        }
+        else if (colorButton2.colorUse2 == 1)
+        {
+            colorButton2.color = color
+            FotonGrid.colorSelect(color)
+        }
+        else if (colorButton3.colorUse3 == 1)
+        {
+            colorButton3.color = color
+            FotonGrid.colorSelect(color)
+        }
+        else if (colorButton4.colorUse4 == 1)
+        {
+            colorButton4.color = color
+            FotonGrid.colorSelect(color)
+        }
+    }
 }

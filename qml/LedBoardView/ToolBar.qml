@@ -34,7 +34,7 @@ Rectangle
     {
          spacing: 0
 
-         Rectangle{height: animationBar.height/10; width: animationBar.width; color: "transparent"}
+         //Rectangle{height: animationBar.height/10; width: animationBar.width; color: "transparent"}
 
          Rectangle
          {
@@ -61,6 +61,7 @@ Rectangle
                     penTool.border.color = "#14DADE"
                     fillTool.border.color = 'black'
                     moveTool.border.color = 'black'
+                    eyedropperTool.border.color = 'black'
 
                 }
             }
@@ -91,6 +92,7 @@ Rectangle
                     fillTool.border.color = "#14DADE"
                     toolBar.toolSelected();
                     moveTool.border.color = 'black'
+                    eyedropperTool.border.color = 'black'
                 }
             }
          }
@@ -155,6 +157,36 @@ Rectangle
                     penTool.border.color = 'black'
                     fillTool.border.color = 'black'
                     moveTool.border.color = "#14DADE"
+                    eyedropperTool.border.color = 'black'
+                    toolBar.toolSelected();
+                }
+            }
+         }
+         Rectangle
+         {
+            id: eyedropperTool
+            height: animationBar.height/10
+            width: animationBar.width
+            radius: width*.1
+            border.width: 6
+            border.color: 'black'
+            Image
+            {
+                source: "images/colorPicker.png"
+                anchors.fill: parent
+                anchors.margins: 6
+            }
+
+            MouseArea
+            {
+                anchors.fill:parent
+                onClicked:
+                {
+                    square.selectedTool = "Eyedropper"
+                    eyedropperTool.border.color = "#14DADE"
+                    penTool.border.color = 'black'
+                    fillTool.border.color = 'black'
+                    moveTool.border.color = 'black'
                     toolBar.toolSelected();
                 }
             }
