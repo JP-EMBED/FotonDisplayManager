@@ -341,5 +341,6 @@ Rectangle
             colorButton4.color = color
             FotonGrid.colorSelect(color)
         }
+        LedBoardManager.sendLedColor(color)
     }
 }
