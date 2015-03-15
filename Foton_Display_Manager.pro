@@ -61,7 +61,12 @@ DISTFILES += \
     qml/TitleView/TitleView.qml \
     qml/ledscreencomponent/LedScreen.qml \
     qml/TitleView/TitleButton.qml \
-    qml/LedBoardView/images/pen.png
+    qml/LedBoardView/images/pen.png \
+    qml/SystemTest/SystemTestView.qml \
+    qml/SystemTest/TitleBar.qml \
+    qml/SystemTest/ColorChecker/ColorCheckerView.qml \
+    qml/SystemTest/ColorChecker/Spinner.qml \
+    qml/SystemTest/ColorChecker/RGBColorPicker.qml
 
 HEADERS += \
     connectionmanager.h \

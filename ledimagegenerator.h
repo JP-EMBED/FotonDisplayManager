@@ -24,6 +24,8 @@ signals:
 public slots:
 
 private:
+    QRgb generateConvertedColor(QRgb rgb);
+    void convertColorTable(QImage& image);
     QPixmap      mPicture;
     QQmlEngine * mEngine;
 

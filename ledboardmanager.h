@@ -26,6 +26,9 @@ public slots:
     void requestDevicePair(QString name, QString address);
     void sendLedColor(QColor color);
     void changeConnectionType(QString type);
+    void setColorGradient(int startR, int startG, int startB,
+                          int changeXR, int changeXG ,int changeXB,
+                          int changeYR, int changeYG ,int changeYB);
 
 private slots:
     void foundDevice(QString dname, QString dmac, QStringList dservice);

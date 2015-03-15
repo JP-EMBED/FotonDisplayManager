@@ -4,6 +4,7 @@ import "LedBoardView"
 import "ConnectionMenu"
 import "CameraView"
 import "TitleView"
+import "SystemTest"
 ApplicationWindow
 {
     title: "Foton Display Manager"
@@ -49,5 +50,20 @@ ApplicationWindow
         anchors.centerIn: parent
         visible:true
 
+    }
+    SystemTestView{
+        id:testView
+        width:  parent.width
+        height: parent.height
+        color: "black"
+        x:-(width)
+        y:0
+        visible:false
+        Connections{
+            target: boardView.toolBar
+            onTestModeOpen:{
+                testView.showTestView()
+            }
+        }
     }
 }

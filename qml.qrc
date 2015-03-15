@@ -46,5 +46,11 @@
         <file>qml/LedBoardView/images/undoButton.png</file>
         <file>qml/CameraView/images/swap-camera.png</file>
         <file>qml/LedBoardView/images/testButton.png</file>
+        <file>qml/SystemTest/SystemTestView.qml</file>
+        <file>qml/SystemTest/TitleBar.qml</file>
+        <file>qml/SystemTest/images/icon.png</file>
+        <file>qml/SystemTest/ColorChecker/ColorCheckerView.qml</file>
+        <file>qml/SystemTest/ColorChecker/Spinner.qml</file>
+        <file>qml/SystemTest/ColorChecker/RGBColorPicker.qml</file>
     </qresource>
 </RCC>

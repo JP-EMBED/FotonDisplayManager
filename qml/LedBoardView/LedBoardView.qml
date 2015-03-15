@@ -7,6 +7,7 @@ Rectangle
 {
     property alias inputBox: animationBar.inputBox
     property alias ledBoard: square.grid
+    property alias toolBar: toolBar
     id: mainWindow
     width: parent.width
     height: parent.height

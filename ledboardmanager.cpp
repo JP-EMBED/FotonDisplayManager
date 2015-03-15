@@ -73,6 +73,12 @@ void LedBoardManager::devicePaired(QString name, QString address)
 
 }
 
+void LedBoardManager::setColorGradient(int startR, int startG, int startB,
+                                       int changeXR, int changeXG, int changeXB,
+                                       int changeYR, int changeYG, int changeYB)
+{
+
+}
 
 void LedBoardManager::requestDevicePair(QString name, QString address)
 {
