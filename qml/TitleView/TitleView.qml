@@ -23,11 +23,6 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: parent.height/5
-        FontLoader{
-            id:titleFont
-            source:"fonts/Rocker.ttf"
-
-        }
 
         Text{
             anchors.fill: parent
@@ -35,7 +30,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             text:"Display Manager"
-            font.family: titleFont.name
+            font.family: rockerFont.name
         }
     }
     Rectangle{
@@ -66,7 +61,7 @@ Rectangle {
         width: parent.width/4
         height: parent.height/8
         text:"Connect"
-        font_family: titleFont.name
+        font_family: rockerFont.name
         MouseArea{
             anchors.fill: parent
             onClicked:{
@@ -84,7 +79,7 @@ Rectangle {
         width: parent.width/2.6
         height: parent.height/8
         text:"About F0T0N"
-        font_family: titleFont.name
+        font_family: rockerFont.name
     }
 
     TitleButton {
@@ -95,7 +90,7 @@ Rectangle {
         width: parent.width/4
         height: parent.height/8
         text:"Draw"
-        font_family: titleFont.name
+        font_family: rockerFont.name
         MouseArea{
             anchors.fill: parent
             onClicked:{

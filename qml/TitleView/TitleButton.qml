@@ -19,7 +19,7 @@ Rectangle {
         id:textObj
         anchors.fill: parent
         anchors.margins:4
-        font.pixelSize: height*.8
+        font.pixelSize: width/text.length + 16
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         color:"white"

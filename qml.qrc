@@ -18,39 +18,26 @@
         <file>qml/CameraView/CameraView.qml</file>
         <file>qml/CameraView/TitleBar.qml</file>
         <file>qml/CameraView/ToolBar.qml</file>
-        <file>qml/CameraView/images/back.png</file>
         <file>qml/TitleView/TitleView.qml</file>
-        <file>qml/TitleView/images/background.png</file>
         <file>qml/ledscreencomponent/LedScreen.qml</file>
-        <file>qml/ledscreencomponent/images/led_off.png</file>
-        <file>qml/ledscreencomponent/images/led_on.png</file>
         <file>qml/TitleView/fonts/Rocker.ttf</file>
         <file>qml/TitleView/TitleButton.qml</file>
-        <file>qml/ColorPicker/images/Checkered.png</file>
-        <file>qml/LedBoardView/images/pen.png</file>
-        <file>qml/LedBoardView/images/fillBucket.png</file>
-        <file>qml/LedBoardView/images/camera.png</file>
-        <file>qml/LedBoardView/images/move.png</file>
-        <file>qml/LedBoardView/images/selectionBox.png</file>
-        <file>qml/LedBoardView/images/addButton.png</file>
-        <file>qml/LedBoardView/images/colorPicker.png</file>
-        <file>qml/LedBoardView/images/copyButton.png</file>
-        <file>qml/LedBoardView/images/deleteButton.png</file>
-        <file>qml/LedBoardView/images/nextButton.png</file>
-        <file>qml/LedBoardView/images/pasteButton.png</file>
-        <file>qml/LedBoardView/images/pauseButton.png</file>
-        <file>qml/LedBoardView/images/playButton.png</file>
-        <file>qml/LedBoardView/images/previousButton.png</file>
-        <file>qml/LedBoardView/images/redoButton.png</file>
-        <file>qml/LedBoardView/images/spongeButton.png</file>
-        <file>qml/LedBoardView/images/undoButton.png</file>
-        <file>qml/CameraView/images/swap-camera.png</file>
-        <file>qml/LedBoardView/images/testButton.png</file>
         <file>qml/SystemTest/SystemTestView.qml</file>
         <file>qml/SystemTest/TitleBar.qml</file>
-        <file>qml/SystemTest/images/icon.png</file>
         <file>qml/SystemTest/ColorChecker/ColorCheckerView.qml</file>
         <file>qml/SystemTest/ColorChecker/Spinner.qml</file>
         <file>qml/SystemTest/ColorChecker/RGBColorPicker.qml</file>
+        <file>qml/SystemTest/ATCommandTest/TerminalEditView.qml</file>
+        <file>qml/SystemTest/ATCommandTest/TerminalView.qml</file>
+        <file>qml/SystemTest/ATCommandTest/DropDown.qml</file>
+        <file>qml/SystemTest/ATCommandTest/HC05CommandTypes.qml</file>
+        <file>qml/SystemTest/ATCommandTest/HC05CommandList.qml</file>
+        <file>qml/SystemTest/ATCommandTest/CommandWidgetLoader.qml</file>
+        <file>qml/SystemTest/ATCommandTest/styles/ATOnOffStyleHiRes.qml</file>
+        <file>qml/SystemTest/ATCommandTest/BaudRateList.qml</file>
+        <file>qml/SystemTest/ATCommandTest/TextInput.qml</file>
+        <file>qml/SystemTest/ATCommandTest/styles/ATOnOffStyleLowRes.qml</file>
+        <file>qml/SystemTest/ATCommandTest/ATOnOffHiRes.qml</file>
+        <file>qml/SystemTest/ATCommandTest/ATOnOffLowRes.qml</file>
     </qresource>
 </RCC>

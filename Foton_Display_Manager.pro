@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     serialconnectionmanager.cpp \
     ledimagegenerator.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    images.qrc
 
 CONFIG += C++11
 
@@ -61,12 +62,23 @@ DISTFILES += \
     qml/TitleView/TitleView.qml \
     qml/ledscreencomponent/LedScreen.qml \
     qml/TitleView/TitleButton.qml \
-    qml/LedBoardView/images/pen.png \
     qml/SystemTest/SystemTestView.qml \
     qml/SystemTest/TitleBar.qml \
     qml/SystemTest/ColorChecker/ColorCheckerView.qml \
     qml/SystemTest/ColorChecker/Spinner.qml \
-    qml/SystemTest/ColorChecker/RGBColorPicker.qml
+    qml/SystemTest/ColorChecker/RGBColorPicker.qml \
+    qml/SystemTest/ATCommandTest/TerminalView.qml \
+    qml/SystemTest/ATCommandTest/TerminalEditView.qml \
+    qml/SystemTest/ATCommandTest/DropDown.qml \
+    qml/SystemTest/ATCommandTest/HC05CommandTypes.qml \
+    qml/SystemTest/ATCommandTest/HC05CommandList.qml \
+    qml/SystemTest/ATCommandTest/CommandWidgetLoader.qml \
+    qml/SystemTest/ATCommandTest/styles/ATOnOffStyleHiRes.qml \
+    qml/SystemTest/ATCommandTest/BaudRateList.qml \
+    qml/SystemTest/ATCommandTest/TextInput.qml \
+    qml/SystemTest/ATCommandTest/styles/ATOnOffStyleLowRes.qml \
+    qml/SystemTest/ATCommandTest/ATOnOffHiRes.qml \
+    qml/SystemTest/ATCommandTest/ATOnOffLowRes.qml
 
 HEADERS += \
     connectionmanager.h \
@@ -80,21 +92,6 @@ HEADERS += \
     ledimagegenerator.h
 
 OTHER_FILES += \
-    qml/main.qml \
-    qml/ColorPicker/CheckerBoard.qml \
-    qml/ColorPicker/ColorPicker.qml \
-    qml/ColorPicker/ColorSlider.qml \
-    qml/ColorPicker/NumberBox.qml \
-    qml/ColorPicker/PanelBorder.qml \
-    qml/ColorPicker/SBPicker.qml \
-    qml/FExplorer/FExplorer.qml \
-    qml/FExplorer/File.qml \
-    qml/LedBoardView/AnimationBar.qml \
-    qml/LedBoardView/ColorPalette.qml \
-    qml/LedBoardView/LedBoardView.qml \
-    qml/LedBoardView/LedGrid.qml \
-    qml/LedBoardView/ToolBar.qml \
-    qml/ConnectionMenu/FindDeviceMenu.qml \
-    qml/ledscreencomponent/LedScreen.qml
+
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

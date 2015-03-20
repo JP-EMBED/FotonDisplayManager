@@ -5,6 +5,9 @@ import "ConnectionMenu"
 import "CameraView"
 import "TitleView"
 import "SystemTest"
+
+
+
 ApplicationWindow
 {
     title: "Foton Display Manager"
@@ -20,7 +23,11 @@ ApplicationWindow
         titleScreen.visible = false;
         boardView.visible = true;
     }
+    FontLoader{
+        id:rockerFont
+        source:"TitleView/fonts/Rocker.ttf"
 
+    }
 
 
     LedBoardView{
